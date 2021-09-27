@@ -25,7 +25,7 @@ const create = (req, res) => {
 const readAll = (req, res) => {
     Task.find()
         .then((results) => {
-            res.status(200).json({ results });
+            res.status(200).json(results);
         }, (error) => {
             console.log(error);
             return res.status(401).json({ error });
@@ -41,6 +41,7 @@ const readOne = (req, res) => {
         })
 }
 
+// Learned a more efficient way to write a put request for updating data in node.js
 const update = (req, res) => {
     if(!req.body) {
         res.status(422).json({ error: 'Field is empty!' });
