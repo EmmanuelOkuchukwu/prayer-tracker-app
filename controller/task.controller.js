@@ -14,7 +14,7 @@ const create = (req, res) => {
     })
     task.save()
         .then((results) => {
-            res.status(201).json({ results });
+            res.status(201).json(results);
         })
         .catch((error) => {
             console.log(error);
@@ -28,7 +28,7 @@ const readAll = (req, res) => {
             res.status(200).json(results);
         }, (error) => {
             console.log(error);
-            return res.status(401).json({ error });
+            return res.status(401).json(error);
         })
 }
 const readOne = (req, res) => {
@@ -37,7 +37,7 @@ const readOne = (req, res) => {
             res.status(200).json({ result })
         }, error => {
             console.log(error);
-            return res.status(401).json({ error });
+            return res.status(401).json(error);
         })
 }
 
@@ -70,7 +70,7 @@ const deleteOneTask = (req, res) => {
             console.log(error);
             return res.status(401).json({ error });
         } else {
-            res.status(200).json({ doc })
+            res.status(200).json(doc)
         }
     })
 }

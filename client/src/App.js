@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import TaskCenter from './pages/taskCenter';
 import './scss/App.scss';
 import './scss/styles.scss';
+import AddTask from "./pages/addTask";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       </div>
       <Switch>
         <Route exact path="/" component={TaskCenter} />
+        <Route path="/add-task" component={AddTask} />
       </Switch>
     </div>
   );

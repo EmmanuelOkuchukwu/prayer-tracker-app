@@ -1,7 +1,8 @@
 .navbar-container {
     width: 100%;
-    background-color: aqua;
+    background-color: #282c34;
     padding: 10px;
+    color: #fff;
 }
 .navbar-wrapper {
     margin: 0 auto;
@@ -19,10 +20,96 @@
     align-items: center;
 }
 
+.fa-plus-square {
+    cursor: pointer;
+}
+
 .task-card {
     //padding: 4px;
     width: 100%;
     border: solid 1px #ddd;
     border-radius: 4px;
     margin: 10px 0;
+    padding: 0;
+    p {
+        margin: 0 10px;
+    }
 }
+.task-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.fa-trash {
+    cursor: pointer;
+}
+
+.add-todo-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.add-todos-title {
+    border-bottom: 1px solid #282c34;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fa-long-arrow-alt-left {
+    color: #282c34;
+    cursor: pointer;
+}
+
+.main-background-form {
+    height: 100%;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
+    height: 400px;
+    width: 350px;
+    border-radius: 4px;
+    background-color: #f1f1f1;
+}
+
+.add-todo-form {
+    padding: 25px;
+    h3 {
+        border-bottom: 1px solid #dddddd;
+    }
+}
+
+.text-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    cursor: pointer;
+    &:hover {
+        background-color: #dddddd;
+        transition: all 0.2s ease-in-out;
+    }
+}
+
+//@media screen and (max-width: $breakpoint-sm) {
+//    .add-todo-container {
+//        margin: 155px 0;
+//    }
+//}
+

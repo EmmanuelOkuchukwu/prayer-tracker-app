@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { TaskService } from "../service/taskService";
 import '../scss/styles.scss';
+import moment from 'moment';
+import { useHistory } from 'react-router-dom';
 
 function TaskCenter() {
+    const history = useHistory();
     const [tasks, setTasks] = useState([]);
     useEffect(() => {
         function getTasks() {
@@ -27,29 +30,32 @@ function TaskCenter() {
                 } else {
                     return null
                 }
+            }, (error) => {
+                console.log(error);
             })
     }
+    const displayTasks = <div className="tasks-container">
+        {tasks?.length > 0 ? tasks?.map((task) => (
+            <div key={task._id} className="task-card">
+                <div className="task-heading">
+                    <h4>{task.title}</h4>
+                    <i className="fas fa-trash" onClick={() => handleDeleteTask(task._id)} />
+                </div>
+                <hr />
+                <p>{task.description}</p>
+                <p>{moment(task.createdAt).format('MMMM Do YYYY')}</p>
+            </div>
+        )): <p>No Tasks found!</p>}
+    </div>
     return (
         <main className="task-center-container">
             <div className="task-center-wrapper">
                 <div className="sub-heading">
-                    <h4>Task Center</h4>
-                    <div>Add Task</div>
+                    <h3>Task Center</h3>
+                    <i className="fas fa-plus-square fa-2x" onClick={() => history.push('/add-task')} />
                 </div>
                 <hr />
-                <div className="tasks-container">
-                    {tasks?.length > 0 ? tasks?.map((task) => (
-                        <div key={task._id} className="task-card">
-                            <div>
-                                <h4>{task.title}</h4>
-                                <p>{task.description}</p>
-                            </div>
-                            <div>
-                                <button onClick={() => handleDeleteTask(task._id)}>Delete Task</button>
-                            </div>
-                        </div>
-                    )): <p>No Tasks found!</p>}
-                </div>
+                {displayTasks}
             </div>
         </main>
     )

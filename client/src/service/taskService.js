@@ -1,6 +1,18 @@
 import axios from 'axios';
+import { ReactKey } from '../react-key';
 
-const API_URL = process.env.REACT_APP_API_URL
+const API_URL = ReactKey.API_URL;
+
+async function onCreateTask(formData) {
+    try {
+        const response = await axios.post(`${API_URL}/api/tasks/createtasks`, formData, {
+            'Content-Type': 'application/json'
+        })
+        return response.data
+    } catch(e) {
+        console.log(e)
+    }
+}
 
 async function fetchTasks() {
     try {
@@ -22,5 +34,6 @@ async function onDeleteTasks(id) {
 
 export const TaskService = {
     fetchTasks,
-    onDeleteTasks
+    onDeleteTasks,
+    onCreateTask
 }
