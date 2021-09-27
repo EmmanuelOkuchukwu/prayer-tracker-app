@@ -24,6 +24,8 @@ function TaskCenter() {
                         return task._id !== id;
                     });
                     setTasks(deleteTask);
+                } else {
+                    return null
                 }
             })
     }
