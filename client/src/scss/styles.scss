@@ -24,6 +24,13 @@
     cursor: pointer;
 }
 
+.icon-container {
+    display: flex;
+    justify-content: space-between;
+    width: 40px;
+    align-items: center;
+}
+
 .task-card {
     //padding: 4px;
     width: 100%;
@@ -44,6 +51,9 @@
 }
 
 .fa-trash {
+    cursor: pointer;
+}
+.fa-edit {
     cursor: pointer;
 }
 

@@ -39,7 +39,10 @@ function TaskCenter() {
             <div key={task._id} className="task-card">
                 <div className="task-heading">
                     <h4>{task.title}</h4>
-                    <i className="fas fa-trash" onClick={() => handleDeleteTask(task._id)} />
+                    <div className="icon-container">
+                        <i className="fas fa-trash" onClick={() => handleDeleteTask(task._id)} />
+                        <i className="fas fa-edit" onClick={() => history.push(`/update-task/${task._id}`)} />
+                    </div>
                 </div>
                 <hr />
                 <p>{task.description}</p>
