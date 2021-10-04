@@ -9,6 +9,7 @@ import Card from 'react-bootstrap/Card';
 function TaskCenter() {
     const history = useHistory();
     const [tasks, setTasks] = useState([]);
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
         return getTasks()
     }, [])
@@ -18,8 +19,10 @@ function TaskCenter() {
             .then((results) => {
                 setTasks(results);
                 console.log(results);
+                setLoading(true);
             }, (error) => {
                 console.log(error);
+                setLoading(false);
             })
     }
     function handleDeleteTask(id) {
@@ -78,7 +81,11 @@ function TaskCenter() {
                     </div>
                 </div>
                 <hr />
-                {displayTasks}
+                {loading ?
+                    <div>
+                        {displayTasks}
+                    </div> : <p>Tasks are Loading...</p>
+                }
             </div>
         </main>
     )

@@ -60,9 +60,9 @@ function UpdateTask() {
                 </Card.Header>
                 <Card.Body>
                     <Form onSubmit={handleTaskUpdate}>
-                        <label htmlFor="title">Title:</label>
+                        <Form.Label>Title:</Form.Label>
                         <Form.Control type="text" name="title" value={editTodo?.title} onChange={handleChange} /><br />
-                        <label htmlFor="description">Description:</label>
+                        <Form.Label>Description:</Form.Label>
                         <Form.Control type="text" name="description" value={editTodo?.description} onChange={handleChange} /><br />
                         <Form.Control type="submit" value="Update" variant="success" />
                     </Form>
