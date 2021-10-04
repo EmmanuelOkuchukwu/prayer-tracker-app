@@ -10,22 +10,23 @@ function TaskCenter() {
     const history = useHistory();
     const [tasks, setTasks] = useState([]);
     useEffect(() => {
-        function getTasks() {
-            TaskService.fetchTasks()
+        return getTasks()
+    }, [])
+
+    function getTasks() {
+        TaskService.fetchTasks()
             .then((results) => {
                 setTasks(results);
                 console.log(results);
             }, (error) => {
                 console.log(error);
             })
-        }
-        return getTasks()
-    }, [])
+    }
     function handleDeleteTask(id) {
         TaskService.onDeleteTasks(id)
             .then((response) => {
                 if(response) {
-                    const deleteTask = tasks.filter(task => {
+                    const deleteTask = tasks?.filter(task => {
                         return task._id !== id;
                     });
                     setTasks(deleteTask);
@@ -34,6 +35,19 @@ function TaskCenter() {
                 }
             }, (error) => {
                 console.log(error);
+            })
+    }
+
+    const refreshList = () => {
+        getTasks();
+        setTasks(null);
+    };
+
+    function handleDeleteAll() {
+        TaskService.onDeleteAll()
+            .then((response) => {
+                console.log(response.data);
+                refreshList();
             })
     }
     const displayTasks = <div className="tasks-container">
@@ -59,8 +73,8 @@ function TaskCenter() {
                 <div className="sub-heading">
                     <h3>Task Center</h3>
                     <div>
-                        <Button variant="success" onClick={() => history.push('/add-task')}>Add Todo</Button>{' '}
-                        <Button variant="danger">Delete All</Button>
+                        <Button variant="success" onClick={() => history.push('/add-task')}>Add Task</Button>{' '}
+                        <Button variant="danger" onClick={handleDeleteAll}>Delete All</Button>
                     </div>
                 </div>
                 <hr />

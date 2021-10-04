@@ -9,7 +9,9 @@
     max-width: 1100px;
 }
 
-.task-center-container {}
+.task-center-container {
+    margin: 30px 0;
+}
 .task-center-wrapper {
     margin: 0 auto;
     max-width: 1100px;
@@ -119,6 +121,13 @@
         background-color: #dddddd;
         transition: all 0.2s ease-in-out;
     }
+}
+
+.update-task {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 //@media screen and (max-width: $breakpoint-sm) {
