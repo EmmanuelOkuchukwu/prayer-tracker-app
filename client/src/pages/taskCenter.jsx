@@ -3,6 +3,8 @@ import { TaskService } from "../service/taskService";
 import '../scss/styles.scss';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 
 function TaskCenter() {
     const history = useHistory();
@@ -36,18 +38,19 @@ function TaskCenter() {
     }
     const displayTasks = <div className="tasks-container">
         {tasks?.length > 0 ? tasks?.map((task) => (
-            <div key={task._id} className="task-card">
-                <div className="task-heading">
+            <Card key={task._id} className="task-card">
+                <Card.Header className="task-heading">
                     <h4>{task.title}</h4>
                     <div className="icon-container">
                         <i className="fas fa-trash" onClick={() => handleDeleteTask(task._id)} />
                         <i className="fas fa-edit" onClick={() => history.push(`/update-task/${task._id}`)} />
                     </div>
-                </div>
-                <hr />
-                <p>{task.description}</p>
-                <p>{moment(task.createdAt).format('MMMM Do YYYY')}</p>
-            </div>
+                </Card.Header>
+                <Card.Body>
+                    <p>{task.description}</p>
+                    <p>{moment(task.createdAt).format('MMMM Do YYYY')}</p>
+                </Card.Body>
+            </Card>
         )): <p>No Tasks found!</p>}
     </div>
     return (
@@ -55,7 +58,10 @@ function TaskCenter() {
             <div className="task-center-wrapper">
                 <div className="sub-heading">
                     <h3>Task Center</h3>
-                    <i className="fas fa-plus-square fa-2x" onClick={() => history.push('/add-task')} />
+                    <div>
+                        <Button variant="success" onClick={() => history.push('/add-task')}>Add Todo</Button>{' '}
+                        <Button variant="danger">Delete All</Button>
+                    </div>
                 </div>
                 <hr />
                 {displayTasks}

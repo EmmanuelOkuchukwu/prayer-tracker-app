@@ -74,7 +74,7 @@ const deleteOneTask = (req, res) => {
         }
     })
 }
-const deleteAll = () => {
+const deleteAll = (req, res) => {
     Task.deleteMany({})
         .then(results => {
             res.status(200).json({ results })
