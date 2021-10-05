@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import { useAlert } from 'react-alert';
 import { TaskService } from '../service/taskService';
 import Card from 'react-bootstrap/Card';
 import '../scss/styles.scss';
 import Form from 'react-bootstrap/Form';
-import Button from "react-bootstrap/Button";
+import Button from 'react-bootstrap/Button';
 
 function UpdateTask() {
     const initialValue = {
@@ -12,6 +13,7 @@ function UpdateTask() {
         description: ''
     }
     const [editTodo, setEditTodo] = useState(initialValue);
+    const alert = useAlert();
     const { id } = useParams();
     const history = useHistory();
     useEffect(() => {
@@ -36,7 +38,7 @@ function UpdateTask() {
         }
         TaskService.onUpdateTask(id, formData)
         .then((results) => {
-            window.alert(`Updated task for id=${id}`);
+            alert.success(`Updated task for id=${id}`);
             console.log(results);
             history.push('/');
         }, (error) => {
@@ -48,12 +50,13 @@ function UpdateTask() {
             .then((response) => {
                 console.log(response);
                 history.push('/');
+                alert.success(`You success deleted task ${id}`);
             })
             .catch((error) => console.log(error));
     }
     return(
         <div className="update-task">
-            <Card style={{ width: '20%' }}>
+            <Card style={{ width: '30%' }}>
                 <Card.Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                     <h2>Update Tasks</h2>
                     <Button variant="danger" onClick={handleDeleteTask}>Delete</Button>
@@ -63,7 +66,7 @@ function UpdateTask() {
                         <Form.Label>Title:</Form.Label>
                         <Form.Control type="text" name="title" value={editTodo?.title} onChange={handleChange} /><br />
                         <Form.Label>Description:</Form.Label>
-                        <Form.Control type="text" name="description" value={editTodo?.description} onChange={handleChange} /><br />
+                        <Form.Control as="textarea" type="text" name="description" value={editTodo?.description} onChange={handleChange} col="5" rows="5" /><br />
                         <Form.Control type="submit" value="Update" variant="success" />
                     </Form>
                 </Card.Body>

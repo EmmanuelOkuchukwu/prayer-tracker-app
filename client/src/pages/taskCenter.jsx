@@ -3,11 +3,13 @@ import { TaskService } from "../service/taskService";
 import '../scss/styles.scss';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
+import { useAlert } from 'react-alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function TaskCenter() {
     const history = useHistory();
+    const alert = useAlert();
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
@@ -26,19 +28,24 @@ function TaskCenter() {
             })
     }
     function handleDeleteTask(id) {
-        TaskService.onDeleteTasks(id)
-            .then((response) => {
-                if(response) {
-                    const deleteTask = tasks?.filter(task => {
-                        return task._id !== id;
-                    });
-                    setTasks(deleteTask);
-                } else {
-                    return null
-                }
-            }, (error) => {
-                console.log(error);
-            })
+        if(!window.alert("Are you sure you want to delete your task")) {
+            TaskService.onDeleteTasks(id)
+                .then((response) => {
+                    if(response) {
+                        const deleteTask = tasks?.filter(task => {
+                            return task._id !== id;
+                        });
+                        setTasks(deleteTask);
+                        alert.success('All tasks Deleted!');
+                    } else {
+                        return null
+                    }
+                }, (error) => {
+                    console.log(error);
+                })
+        } else {
+            return {};
+        }
     }
 
     const refreshList = () => {
@@ -47,11 +54,17 @@ function TaskCenter() {
     };
 
     function handleDeleteAll() {
-        TaskService.onDeleteAll()
-            .then((response) => {
-                console.log(response.data);
-                refreshList();
-            })
+        if(!window.alert("Are you sure you want to delete all the tasks!")) {
+            TaskService.onDeleteAll()
+                .then((response) => {
+                    console.log(response.data);
+                    refreshList();
+                    alert.success('All tasks Deleted!');
+                })
+                .catch(error => console.log(error));
+        } else {
+            return []
+        }
     }
     const displayTasks = <div className="tasks-container">
         {tasks?.length > 0 ? tasks?.map((task) => (
