@@ -79,7 +79,7 @@ function TaskCenter() {
                 <Card.Body>
                     <p>Content: {task.description}</p>
                     <p>Status: {task.completed ? <i className="fas fa-check-circle" /> : <i className="fas fa-times" />}</p>
-                    <p>Date Created: {moment(task.createdAt).format('MMMM Do YYYY LT')}</p>
+                    <p>Date Created: {moment(task.createdAt).format('MMMM Do YYYY')}</p>
                 </Card.Body>
             </Card>
         )): <p>No Tasks found!</p>}
