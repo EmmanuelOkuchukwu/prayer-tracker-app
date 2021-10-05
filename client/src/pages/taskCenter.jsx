@@ -77,9 +77,9 @@ function TaskCenter() {
                     </div>
                 </Card.Header>
                 <Card.Body>
-                    <p>{task.description}</p>
-                    <p>{task?.completed}</p>
-                    <p>{moment(task.createdAt).format('MMMM Do YYYY')}</p>
+                    <p>Content: {task.description}</p>
+                    <p>Status: {task.completed ? <i className="fas fa-check-circle" /> : <i className="fas fa-times" />}</p>
+                    <p>Date Created: {moment(task.createdAt).format('MMMM Do YYYY LT')}</p>
                 </Card.Body>
             </Card>
         )): <p>No Tasks found!</p>}
