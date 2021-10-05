@@ -36,7 +36,7 @@ function TaskCenter() {
                             return task._id !== id;
                         });
                         setTasks(deleteTask);
-                        alert.success('All tasks Deleted!');
+                        alert.success(`Deleted id=${id}`);
                     } else {
                         return null
                     }
@@ -78,6 +78,7 @@ function TaskCenter() {
                 </Card.Header>
                 <Card.Body>
                     <p>{task.description}</p>
+                    <p>{task?.completed}</p>
                     <p>{moment(task.createdAt).format('MMMM Do YYYY')}</p>
                 </Card.Body>
             </Card>

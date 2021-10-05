@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Task = mongoose.model('task');
 
 const create = (req, res) => {
-    const { title, description } = req.body;
+    const { title, description, completed } = req.body;
 
     if(!title || !description) {
         res.status(422).json({ error: 'Field is empty!' });
@@ -10,7 +10,8 @@ const create = (req, res) => {
 
     const task = new Task({
         title,
-        description
+        description,
+        completed
     })
     task.save()
         .then((results) => {

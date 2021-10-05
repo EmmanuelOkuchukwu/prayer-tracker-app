@@ -27,7 +27,8 @@ function AddTask() {
         if(SimpleValidator.current.allValid()) {
             const formData = {
                 title: todoData.title,
-                description: todoData.description
+                description: todoData.description,
+                completed: false
             }
             TaskService.onCreateTask(formData)
                 .then(() => {
