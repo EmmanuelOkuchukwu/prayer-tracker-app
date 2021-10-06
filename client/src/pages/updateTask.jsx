@@ -14,6 +14,7 @@ function UpdateTask() {
         completed: false
     }
     const [editTodo, setEditTodo] = useState(initialValue);
+    const [loading, setLoading] = useState(false);
     const alert = useAlert();
     const { id } = useParams();
     const history = useHistory();
@@ -52,8 +53,10 @@ function UpdateTask() {
                 alert.success(`Updated task for id=${id}`);
                 console.log(results);
                 history.push('/');
+                setLoading(true);
             }, (error) => {
                 console.log(error);
+                setLoading(false);
             });
     }
     function handleDeleteTask() {
@@ -62,8 +65,12 @@ function UpdateTask() {
                 console.log(response);
                 history.push('/');
                 alert.success(`You success deleted task ${id}`);
+                setLoading(true);
             })
-            .catch((error) => console.log(error));
+            .catch((error) => {
+                console.log(error);
+                setLoading(false);
+            });
     }
     return(
         <div className="update-task">
@@ -86,7 +93,7 @@ function UpdateTask() {
                         <Form.Label>Description:</Form.Label>
                         <Form.Control as="textarea" type="text" name="description" value={editTodo?.description} onChange={handleChange} col="5" rows="5" /><br />
                         <div><label>Status:</label>{' '}{editTodo?.completed ? <span>Completed</span> : <span>Not Completed</span>}</div>
-                        <Form.Control type="submit" value="Update" variant="success" />
+                        <Form.Control type="submit" value={!loading ? 'Update' : 'Loading...'} variant="success" />
                     </Form>
                 </Card.Body>
             </Card>
