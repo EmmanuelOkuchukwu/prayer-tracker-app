@@ -74,7 +74,7 @@ function UpdateTask() {
     }
     return(
         <div className="update-task">
-            <Card style={{ width: '30%' }}>
+            <Card className="task-update">
                 <Card.Header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                     <h2>Update Tasks</h2>
                     <div>

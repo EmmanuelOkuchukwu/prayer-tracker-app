@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { useAlert } from 'react-alert';
 import SimpleReactValidator from 'simple-react-validator';
+import '../scss/styles.scss';
 
 function AddTask() {
     const history = useHistory();
@@ -52,7 +53,7 @@ function AddTask() {
                 <i className="fas fa-long-arrow-alt-left fa-3x" onClick={() => history.push('/')} />
             </div>
             <div className="main-background-form">
-                <Card style={{ width: '35%' }}>
+                <Card style={{ width: '35%' }} className="add-card">
                     <Card.Header>
                         <h3>Add Task</h3>
                     </Card.Header>

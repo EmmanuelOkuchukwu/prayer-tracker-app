@@ -1,3 +1,5 @@
+@import './App';
+
 .navbar-container {
     width: 100%;
     background-color: #282c34;
@@ -49,7 +51,7 @@
 }
 .task-card {
     width: 45%;
-    border: solid 1px #ddd;
+    border: solid 1px $primaryColor;
     border-radius: 4px;
     margin: 10px 10px;
     padding: 0;
@@ -109,6 +111,10 @@
     }
 }
 
+.task-update {
+    width: 30%;
+}
+
 .text-input {
     width: 100%;
     padding: 10px;
@@ -121,7 +127,7 @@
     width: 100%;
     padding: 10px;
     margin: 10px 0;
-    border: 1px solid #dddddd;
+    border: 1px solid $primaryColor;
     border-radius: 4px;
     cursor: pointer;
     &:hover {
@@ -137,9 +143,42 @@
     justify-content: center;
 }
 
-//@media screen and (max-width: $breakpoint-sm) {
-//    .add-todo-container {
-//        margin: 155px 0;
-//    }
-//}
+@media screen and (max-width: $breakpoint-sm) {
+    .tasks-container {
+        display: flex;
+        flex-direction: row;
+    }
+    .sub-heading {
+        display: flex;
+        flex-direction: column;
+    }
+    .task-card {
+        width: 100%;
+    }
+    .add-card {
+        width: 100%;
+    }
+    .add-todo-container {
+        //margin: 155px 0;
+    }
 
+    .task-update {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: $breakpoint-xl) {
+    .task-update {
+        width: 100%;
+    }
+    .task-card {
+        width: 100%;
+    }
+    .add-card {
+        width: 100%;
+    }
+    .tasks-container {
+        display: flex;
+        flex-direction: row;
+    }
+}

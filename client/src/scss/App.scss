@@ -6,3 +6,14 @@ body {
   margin: 0;
   padding: 0;
 }
+
+$primaryColor: #ddd;
+$secondaryColor: #000;
+$successColor: green;
+$dangerColor: red;
+
+$breakpoint-xs: 480px !default;
+$breakpoint-sm: 576px !default;
+$breakpoint-md: 768px !default;
+$breakpoint-lg: 992px !default;
+$breakpoint-xl: 1200px !default;
