@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const { DbConnection } = require('./dbConn');
 
-const PORT = 8081;
+const PORT = process.env.PORT || 8081;
 
 app.get('/', (req, res) => {
     res.send({ message: 'Welcome to task tracker application!' });
