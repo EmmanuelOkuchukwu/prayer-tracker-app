@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
+const { SECRET_KEY } = require('../keys');
 
 const register = (req, res) => {
     const { name, email, username, password } = req.body;
@@ -36,17 +37,21 @@ const login = (req, res) => {
         res.status(422).send({ error: 'Email or password is incorrect' });
     }
     User.findOne({ email: email })
-        .then((emailNotFound) => {
-            if(emailNotFound) {
+        .then((registeredUser) => {
+            if(!registeredUser) {
                 res.status(422).send({ error: 'Email does not exist!' });
             }
-            bcrypt.hash(password, emailNotFound.password)
+            bcrypt.hash(password, registeredUser.password)
                 .then((signIn) => {
                     if(signIn) {
-                        const { email, _id, username } = signIn;
-                        const jwt = jwt.sign({ email, username, _id })
+                        const { email, _id, username } = registeredUser;
+                        const token = jwt.sign({ email, _id }, SECRET_KEY)
+                        res.send({ token, email, _id, username });
+                    } else {
+                        res.status(422).send({ error: 'Failed to login!' });
                     }
                 })
+                .catch((err) => console.log(err));
         })
 }
 
