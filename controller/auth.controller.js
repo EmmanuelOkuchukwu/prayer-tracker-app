@@ -30,4 +30,24 @@ const register = (req, res) => {
         .catch((error) => console.log(error));
 }
 
-module.exports = { register };
+const login = (req, res) => {
+    const { email, password } = req.body;
+    if(!email || !password) {
+        res.status(422).send({ error: 'Email or password is incorrect' });
+    }
+    User.findOne({ email: email })
+        .then((emailNotFound) => {
+            if(emailNotFound) {
+                res.status(422).send({ error: 'Email does not exist!' });
+            }
+            bcrypt.hash(password, emailNotFound.password)
+                .then((signIn) => {
+                    if(signIn) {
+                        const { email, _id, username } = signIn;
+                        const jwt = jwt.sign({ email, username, _id })
+                    }
+                })
+        })
+}
+
+module.exports = { register, login };
