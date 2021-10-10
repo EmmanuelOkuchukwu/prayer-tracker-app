@@ -21,10 +21,10 @@ const register = (req, res) => {
                     })
                     user.save()
                         .then((savedUser) => {
-                                res.status(201).json({ message: 'User has been successfully registered!' });
+                                res.status(201).send({ message: 'User has been successfully registered!' });
                         })
                         .catch((error) => {
-                            res.status(422).json({ error: error });
+                            res.status(422).send({ error: error });
                         });
                     })
                 })
@@ -51,8 +51,8 @@ const login = (req, res) => {
                         res.status(422).send({ error: 'Failed to login!' });
                     }
                 })
-                .catch((err) => console.log(err));
         })
+        .catch((err) => console.log(err));
 }
 
 module.exports = { register, login };
