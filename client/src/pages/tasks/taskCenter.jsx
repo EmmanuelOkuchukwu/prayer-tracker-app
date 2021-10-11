@@ -6,6 +6,7 @@ import { useHistory } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import {AuthHeader} from "../../util/authHeader";
 
 function TaskCenter() {
     const history = useHistory();
@@ -22,6 +23,7 @@ function TaskCenter() {
                 setTasks(results);
                 console.log(results);
                 setLoading(true);
+                console.log(AuthHeader())
             }, (error) => {
                 console.log(error);
                 setLoading(false);

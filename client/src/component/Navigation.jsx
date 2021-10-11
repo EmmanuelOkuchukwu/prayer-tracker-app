@@ -2,8 +2,16 @@ import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import Container from 'react-bootstrap/Container';
+import { AuthService } from '../service/authService';
+import { useHistory } from 'react-router-dom';
 
 const Navigationbar = () => {
+    const history = useHistory();
+    const handleLogout = (evt) => {
+        evt.preventDefault();
+        AuthService.onLogout();
+        history.push('/');
+    }
     return (
         <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
             <Container style={{ maxWidth:'1100px', margin: '0 auto', padding: 0 }}>
@@ -16,6 +24,7 @@ const Navigationbar = () => {
                         <Nav.Link eventKey={2} href="#memes">
                             About
                         </Nav.Link>
+                        <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
