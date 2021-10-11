@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import { useAlert } from 'react-alert';
-import { TaskService } from '../service/taskService';
+import { TaskService } from '../../service/taskService';
 import Card from 'react-bootstrap/Card';
-import '../scss/styles.scss';
+import '../../scss/styles.scss';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 

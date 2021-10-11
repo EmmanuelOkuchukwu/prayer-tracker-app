@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { TaskService } from "../service/taskService";
-import '../scss/styles.scss';
+import { TaskService } from "../../service/taskService";
+import '../../scss/styles.scss';
 import moment from 'moment';
 import { useHistory } from 'react-router-dom';
 import { useAlert } from 'react-alert';

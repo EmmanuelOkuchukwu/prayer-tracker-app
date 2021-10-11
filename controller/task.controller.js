@@ -43,6 +43,16 @@ const readOne = (req, res) => {
             return res.status(401).json(error);
         })
 }
+const readMyTasks = (req, res) => {
+    Task.find({ createdBy: req.user._id })
+        .populate("createdBy","_id username")
+        .then(myTasks => {
+            res.status(200).send(myTasks)
+        }, error => {
+            res.status(422).send({error: error})
+            console.log(error);
+    })
+}
 
 // Learned a more efficient way to write a put request for updating data in node.js
 const update = (req, res) => {
@@ -78,7 +88,7 @@ const deleteOneTask = (req, res) => {
     })
 }
 const deleteAll = (req, res) => {
-    Task.deleteMany({})
+    Task.deleteMany({}, { createdBy: req.user._id })
         .then(results => {
             res.status(200).json({ results })
         }, (error) => {
@@ -91,6 +101,7 @@ module.exports = {
     create,
     readAll,
     readOne,
+    readMyTasks,
     update,
     deleteOneTask,
     deleteAll

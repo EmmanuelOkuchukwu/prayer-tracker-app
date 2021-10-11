@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react'
-import { TaskService } from '../service/taskService';
+import { TaskService } from '../../service/taskService';
 import { useHistory } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import { useAlert } from 'react-alert';
 import SimpleReactValidator from 'simple-react-validator';
-import '../scss/styles.scss';
+import '../../scss/styles.scss';
 
 function AddTask() {
     const history = useHistory();
