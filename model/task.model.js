@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ObjectId } = mongoose.Schema.Types
 
 const taskSchema = new mongoose.Schema({
     title: {
@@ -15,6 +16,10 @@ const taskSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now()
+    },
+    createdBy: {
+        type: ObjectId,
+        ref: 'user'
     }
 })
 

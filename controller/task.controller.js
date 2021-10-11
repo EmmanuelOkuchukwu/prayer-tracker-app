@@ -7,11 +7,12 @@ const create = (req, res) => {
     if(!title || !description) {
         res.status(422).json({ error: 'Field is empty!' });
     }
-
+    req.user.password = undefined;
     const task = new Task({
         title,
         description,
-        completed
+        completed,
+        createdBy: req.user
     })
     task.save()
         .then((results) => {
@@ -25,6 +26,7 @@ const create = (req, res) => {
 
 const readAll = (req, res) => {
     Task.find()
+        .populate("createdBy", "_id username")
         .then((results) => {
             res.status(200).json(results);
         }, (error) => {

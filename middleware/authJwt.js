@@ -8,7 +8,7 @@ module.exports = (req, res, next) => {
     if(!authorization) {
         res.status(401).send({ error: 'You need to be logged in to have access!' });
     }
-    const token = authorization("Bearer ","");
+    const token = authorization.replace("Bearer ","");
     jwt.verify(token, SECRET_KEY, (error, payload) => {
         if(error) {
             res.status(401).send({ error: 'You need to be logged in to have access!' })
