@@ -35,7 +35,7 @@ function AddTask() {
                 .then(() => {
                     setIsLoading(true);
                     alert.success('Successfully created new task');
-                    history.push('/');
+                    history.push('/task-center');
                 })
                 .catch((e) => {
                     console.log(e)

@@ -5,12 +5,13 @@ import Container from 'react-bootstrap/Container';
 import { AuthService } from '../service/authService';
 import { useHistory } from 'react-router-dom';
 
-const Navigationbar = () => {
+const Navigationbar = ({ jwt }) => {
     const history = useHistory();
     const handleLogout = (evt) => {
         evt.preventDefault();
         AuthService.onLogout();
         history.push('/');
+        console.log('JWT', jwt)
     }
     return (
         <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">
@@ -24,7 +25,7 @@ const Navigationbar = () => {
                         <Nav.Link eventKey={2} href="#memes">
                             About
                         </Nav.Link>
-                        <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                        {jwt ? <Nav.Link onClick={handleLogout}>Logout</Nav.Link> : ''}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

@@ -52,7 +52,7 @@ function UpdateTask() {
             .then((results) => {
                 alert.success(`Updated task for id=${id}`);
                 console.log(results);
-                history.push('/');
+                history.push('/task-center');
                 setLoading(true);
             }, (error) => {
                 console.log(error);
@@ -63,7 +63,7 @@ function UpdateTask() {
         TaskService.onDeleteTasks(id)
             .then((response) => {
                 console.log(response);
-                history.push('/');
+                history.push('/task-center');
                 alert.success(`You success deleted task ${id}`);
                 setLoading(true);
             })

@@ -28,7 +28,7 @@ function Login() {
             console.log(result);
             setLoading(true);
             history.push('/task-center');
-            alert.success(`Welcome back ${result?.data?.username}`);
+            alert.success(`Welcome back ${result?.username}`);
         }, error => {
             console.log(error);
             setLoading(false);

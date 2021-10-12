@@ -4,13 +4,15 @@ import { AuthHeader } from '../util/authHeader';
 
 // const API_URL = ReactKey.API_URL;
 const API_URL = process.env.REACT_APP_API_URL;
-const token = JSON.parse(localStorage.getItem('user'))
+const token = JSON.parse(localStorage.getItem('user'));
+
+const AuthorizationHeader = AuthHeader()
+AuthorizationHeader['Content-type'] = 'application/json'
 
 async function onCreateTask(formData) {
     try {
         const response = await axios.post(`${API_URL}/api/tasks/createtasks`, formData, {
-            'Content-Type': 'application/json',
-            // Authorization: `Bearer ${token.token}`
+            headers: AuthorizationHeader
         });
         return response.data
     } catch(e) {
@@ -31,7 +33,9 @@ async function fetchTasks() {
 
 async function fetchTask(id) {
     try {
-        const result = await axios.get(`${API_URL}/api/tasks/gettask/${id}`);
+        const result = await axios.get(`${API_URL}/api/tasks/gettask/${id}`, {
+            headers: AuthHeader()
+        });
         return result.data;
     } catch(e) {
         console.log(e)
@@ -52,9 +56,7 @@ async function fetchMyTasks() {
 async function onUpdateTask(id, formData) {
     try {
         const response = await axios.put(`${API_URL}/api/tasks/updatetask/${id}`, formData, {
-            headers: {
-                'Content-Type': 'application/json'
-            }
+            headers: AuthorizationHeader
         });
         return response.data;
     } catch(e) {
@@ -64,7 +66,9 @@ async function onUpdateTask(id, formData) {
 
 async function onDeleteAll() {
     try {
-        const response = await axios.delete(`${API_URL}/api/tasks/deletetasks`);
+        const response = await axios.delete(`${API_URL}/api/tasks/deletetasks`, {
+            headers: AuthHeader()
+        });
         return response.data;
     } catch(e) {
         console.log(e);
@@ -73,7 +77,9 @@ async function onDeleteAll() {
 
 async function onDeleteTasks(id) {
     try {
-        const response = await axios.delete(`${API_URL}/api/tasks/deletetask/${id}`);
+        const response = await axios.delete(`${API_URL}/api/tasks/deletetask/${id}`, {
+            headers: AuthHeader()
+        });
         return response.data
     } catch(e) {
         console.log(e)
