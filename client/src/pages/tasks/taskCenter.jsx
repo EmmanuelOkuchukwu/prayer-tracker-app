@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TaskService } from "../../service/taskService";
 import '../../scss/styles.scss';
 import moment from 'moment';
@@ -6,13 +6,16 @@ import { useHistory } from 'react-router-dom';
 import { useAlert } from 'react-alert';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import {AuthHeader} from "../../util/authHeader";
+import { AuthHeader } from "../../util/authHeader";
+import { UserContext } from '../../userInfo';
 
 function TaskCenter() {
+    const context = useContext(UserContext)
     const history = useHistory();
     const alert = useAlert();
     const [tasks, setTasks] = useState([]);
     const [loading, setLoading] = useState(false);
+    console.log('User:', context?.getUserInfo())
     useEffect(() => {
         return getTasks()
     }, [])

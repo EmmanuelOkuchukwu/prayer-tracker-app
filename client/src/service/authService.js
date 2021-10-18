@@ -1,5 +1,6 @@
 import { BehaviorSubject } from 'rxjs';
 import axios from 'axios';
+import { removeUserInfo, setUserInfo } from '../util/localStorageUtil';
 // import { ReactKey } from '../react-key';
 
 // const API_URL = ReactKey.API_URL;
@@ -14,15 +15,16 @@ function onLogin(formData) {
         }
     }).then((response) => {
         if(response.data.token) {
-            localStorage.setItem('user', JSON.stringify(response.data));
+            setUserInfo(response.data);
             currentUserSubject.next(response.data);
         }
         return response.data;
     })
+    // .catch(error => console.log(error));
 }
 
 function onLogout() {
-    localStorage.clear()
+    removeUserInfo()
     currentUserSubject.next(null);
 }
 

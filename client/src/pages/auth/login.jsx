@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../../scss/authStyles.scss';
 import Form from 'react-bootstrap/Form';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useHistory, Redirect } from 'react-router-dom';
 import { AuthService } from '../../service/authService';
 import { useAlert } from 'react-alert';
 
@@ -29,10 +29,14 @@ function Login() {
             setLoading(true);
             history.push('/task-center');
             alert.success(`Welcome back ${result?.username}`);
-        }, error => {
-            console.log(error);
+        }, (error) => {
+            console.log(error.error);
             setLoading(false);
+            alert.error(error.error)
         })
+    }
+    if(AuthService.currentUserValue) {
+        return <Redirect to={{ pathname: '/task-center' }} />
     }
     return(
         <div className="mainContainer">

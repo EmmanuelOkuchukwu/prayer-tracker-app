@@ -50,7 +50,7 @@ function AddTask() {
         <div className="add-todo-container">
             <div className="add-todos-title">
                 <h2>Add task</h2>
-                <i className="fas fa-long-arrow-alt-left fa-3x" onClick={() => history.push('/')} />
+                <i className="fas fa-long-arrow-alt-left fa-3x" onClick={() => history.push('/task-center')} />
             </div>
             <div className="main-background-form">
                 <Card style={{ width: '35%' }} className="add-card">

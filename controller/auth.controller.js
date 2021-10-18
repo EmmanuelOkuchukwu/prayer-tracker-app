@@ -52,7 +52,10 @@ const login = (req, res) => {
                     }
                 })
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+            res.status(422).send({ error: err });
+            console.log(err);
+        });
 }
 
 module.exports = { register, login };
