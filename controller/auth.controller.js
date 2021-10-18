@@ -41,7 +41,7 @@ const login = (req, res) => {
             if(!registeredUser) {
                 res.status(422).send({ error: 'Email does not exist!' });
             }
-            bcrypt.hash(password, registeredUser.password)
+            bcrypt.compare(password, registeredUser.password)
                 .then((signIn) => {
                     if(signIn) {
                         const { email, _id, username } = registeredUser;
