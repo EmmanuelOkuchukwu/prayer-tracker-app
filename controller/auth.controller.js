@@ -50,9 +50,9 @@ const login = (req, res) => {
             bcrypt.compare(password, registeredUser.password)
                 .then((signIn) => {
                     if(signIn) {
-                        const { email, _id, username } = registeredUser;
+                        const { email, _id, username, avatar } = registeredUser;
                         const token = jwt.sign({ email, _id }, SECRET_KEY)
-                        res.send({ token, email, _id, username });
+                        res.send({ token, email, _id, username, avatar });
                     } else {
                         res.status(422).send({ error: 'Failed to login!' });
                     }

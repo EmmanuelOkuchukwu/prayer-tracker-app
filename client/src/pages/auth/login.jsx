@@ -20,13 +20,14 @@ function Login() {
     }
     const handleLogin = (evt) => {
         evt.preventDefault();
+        setLoading(true);
         const formData = {
             email: loginValue.email,
             password: loginValue.password
         }
         AuthService.onLogin(formData).then((result) => {
             console.log(result);
-            setLoading(true);
+            setLoading(false);
             history.push('/task-center');
             alert.success(`Welcome back ${result?.username}`);
         }, (error) => {
@@ -42,7 +43,7 @@ function Login() {
         <div className="mainContainer">
             <div className="login-wrapper">
                 <div className="info">
-                    <div>
+                    <div className="info-background">
                         <h2>Welcome to the Task Tracker App</h2>
                         <hr />
                         <ul>

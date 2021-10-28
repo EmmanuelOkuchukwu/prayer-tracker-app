@@ -1,10 +1,10 @@
 import { BehaviorSubject } from 'rxjs';
 import axios from 'axios';
 import { removeUserInfo, setUserInfo } from '../util/localStorageUtil';
-// import { ReactKey } from '../react-key';
+import { ReactKey } from '../react-key';
 
-// const API_URL = ReactKey.API_URL;
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = ReactKey.API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')));
 

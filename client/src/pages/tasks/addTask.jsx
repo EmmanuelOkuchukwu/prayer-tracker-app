@@ -32,10 +32,11 @@ function AddTask() {
                 completed: false
             }
             TaskService.onCreateTask(formData)
-                .then(() => {
+                .then((response) => {
                     setIsLoading(true);
                     alert.success('Successfully created new task');
                     history.push('/task-center');
+                    console.log(response.status)
                 })
                 .catch((e) => {
                     console.log(e)

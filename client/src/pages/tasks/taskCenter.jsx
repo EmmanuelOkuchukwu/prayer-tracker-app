@@ -26,7 +26,6 @@ function TaskCenter() {
                 setTasks(results);
                 console.log(results);
                 setLoading(true);
-                console.log(AuthHeader())
             }, (error) => {
                 console.log(error);
                 setLoading(false);
@@ -59,17 +58,17 @@ function TaskCenter() {
     };
 
     function handleDeleteAll() {
-        if(!window.alert("Are you sure you want to delete all the tasks!")) {
-            TaskService.onDeleteAll()
-                .then((response) => {
-                    console.log(response.data);
-                    refreshList();
-                    alert.success('All tasks Deleted!');
-                })
-                .catch(error => console.log(error));
-        } else {
-            return []
-        }
+        TaskService.onDeleteAll().then((response) => {
+            if(response.status === 200) {
+                console.log(response.data);
+                refreshList();
+                alert.success('All tasks Deleted!');
+                console.log(response.status);
+            } else if(response.status === 401) {
+                alert.error('There is no tasks to be deleted!');
+                console.log(response.status);
+            }
+        }).catch(error => console.log(error));
     }
     const displayTasks = <div className="tasks-container">
         {tasks?.length > 0 ? tasks?.map((task) => (

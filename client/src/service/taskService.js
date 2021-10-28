@@ -1,9 +1,9 @@
 import axios from 'axios';
-// import { ReactKey } from '../react-key';
+import { ReactKey } from '../react-key';
 import { AuthHeader } from '../util/authHeader';
 
-// const API_URL = ReactKey.API_URL;
-const API_URL = process.env.REACT_APP_API_URL;
+const API_URL = ReactKey.API_URL;
+// const API_URL = process.env.REACT_APP_API_URL;
 const token = JSON.parse(localStorage.getItem('user'));
 
 const AuthorizationHeader = AuthHeader()
@@ -14,7 +14,7 @@ async function onCreateTask(formData) {
         const response = await axios.post(`${API_URL}/api/tasks/createtasks`, formData, {
             headers: AuthorizationHeader
         });
-        return response.data
+        return response
     } catch(e) {
         console.log(e);
     }
@@ -69,7 +69,7 @@ async function onDeleteAll() {
         const response = await axios.delete(`${API_URL}/api/tasks/deletetasks`, {
             headers: AuthHeader()
         });
-        return response.data;
+        return response
     } catch(e) {
         console.log(e);
     }
