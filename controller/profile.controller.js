@@ -2,17 +2,18 @@ const mongoose = require('mongoose');
 const Profile = mongoose.model('profile');
 
 const createProfile = (req, res) => {
-    const { dateOfBirth, bio, occupation, links } = req.body;
-    if(!dateOfBirth || !bio) {
+    const { name, age, bio, occupation, links } = req.body;
+    if(!age || !bio) {
         res.status(422).send({ message: 'Fields are empty' })
     }
     req.user.password = undefined;
     const profile = new Profile({
-        dateOfBirth,
+        name,
+        age,
         bio,
         occupation,
         links,
-        user: req.user
+        owner: req.user
     })
     profile.save().then((saveProfile) => {
         res.status(201).json(saveProfile)
@@ -23,8 +24,11 @@ const createProfile = (req, res) => {
 }
 
 const getMyProfile = (req, res) => {
-    Profile.findOne({ owner: req.user._id }).then((myProfile) => {
-        res.status(200).send(myProfile)
+    Profile.findOne({ owner: req.user._id })
+    .populate("owner","_id")
+    .then(myProfile => {
+        res.status(200).send(myProfile);
+        console.log(req.user)
     }).catch((error) => {
         res.status(422).send({ error: error })
         console.log(error);

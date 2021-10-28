@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 const User = mongoose.model('user');
 const { SECRET_KEY } = require('../keys');
+const gravatar = require('gravatar');
 
 const register = (req, res) => {
     const { name, email, username, password } = req.body;
@@ -16,8 +17,13 @@ const register = (req, res) => {
             }
             bcrypt.hash(password, 14)
                 .then((passwordHashed) => {
+                    const avatar = gravatar.url(email, {
+                        s: '200',
+                        r: 'pg',
+                        d: 'mm'
+                    })
                     const user = new User({
-                        name, email, username, password: passwordHashed
+                        name, email, username, password: passwordHashed, avatar
                     })
                     user.save()
                         .then((savedUser) => {

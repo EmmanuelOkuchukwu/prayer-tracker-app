@@ -18,10 +18,12 @@ app.use(cors(corsOptions));
 
 require('./model/task.model');
 require('./model/user.model');
+require('./model/profile.model');
 
 app.use(express.json());
 app.use(require('./routes/task.routes'));
 app.use(require('./routes/auth.routes'));
+app.use(require('./routes/profile.routes'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
