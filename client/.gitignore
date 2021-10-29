@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-react-key.js
+src/react-key.js
 
 # testing
 /coverage

@@ -6,12 +6,12 @@ const { SECRET_KEY } = require('../keys');
 module.exports = (req, res, next) => {
     const { authorization } = req.headers;
     if(!authorization) {
-        res.status(401).send({ error: 'You need to be logged in to have access!' });
+        return res.status(401).send({ error: 'You need to be logged in to have access!' });
     }
     const token = authorization.replace("Bearer ","");
     jwt.verify(token, SECRET_KEY, (error, payload) => {
         if(error) {
-            res.status(401).send({ error: 'You need to be logged in to have access!' })
+            return res.status(401).send({ error: 'You need to be logged in to have access!' })
         }
         const { _id } = payload;
         User.findById(_id).then(userInfo => {
