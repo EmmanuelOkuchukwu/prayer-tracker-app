@@ -9,6 +9,7 @@ import Navigationbar from './component/Navigation';
 import Login from './pages/auth/login';
 import { AuthService } from './service/authService';
 import Register from './pages/auth/register';
+import Profile from "./pages/dashboard/Profile";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ function App() {
         <Route path="/task-center" component={TaskCenter} />
         <Route path="/add-task" component={AddTask} />
         <Route path="/update-task/:id" component={UpdateTask} />
+        <Route path="/profile" component={Profile} />
       </Switch>
     </div>
   );

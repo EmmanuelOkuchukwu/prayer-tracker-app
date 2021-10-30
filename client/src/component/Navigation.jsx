@@ -30,11 +30,13 @@ const Navigationbar = () => {
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <div className="me-auto" />
                     <Nav>
-                        {user?.token ? <NavDropdown title={user?.username} id="basic-nav-dropdown">
-                            <NavDropdown.Item>Profile</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
-                        </NavDropdown> : ''}
+                        {user?.token ?
+                            <NavDropdown title={user?.username} id="basic-nav-dropdown">
+                                <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+                                <NavDropdown.Divider />
+                                <NavDropdown.Item onClick={handleLogout}>Logout</NavDropdown.Item>
+                            </NavDropdown> : ''
+                        }
                         <Nav.Link eventKey={2} href="#memes">
                             About
                         </Nav.Link>

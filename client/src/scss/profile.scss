@@ -1,0 +1,26 @@
+.profile-wrapper {
+  max-width: 1110px;
+  margin: 20px auto;
+  width: 100%;
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 5px;
+}
+
+//.avatar-container {
+//  width: 100%;
+//  height: 100%;
+//}
+
+.profile-avatar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+}

@@ -40,21 +40,21 @@ const register = (req, res) => {
 const login = (req, res) => {
     const { email, password } = req.body;
     if(!email || !password) {
-        res.status(422).send({ error: 'Email or password is incorrect' });
+        return res.status(422).send({ error: 'Email or password is incorrect' });
     }
     User.findOne({ email: email })
         .then((registeredUser) => {
             if(!registeredUser) {
-                res.status(422).send({ error: 'Email does not exist!' });
+                return res.status(422).send({ error: 'Email does not exist!' });
             }
             bcrypt.compare(password, registeredUser.password)
                 .then((signIn) => {
                     if(signIn) {
                         const { email, _id, username, avatar } = registeredUser;
                         const token = jwt.sign({ email, _id }, SECRET_KEY)
-                        res.send({ token, email, _id, username, avatar });
+                        return res.send({ token, email, _id, username, avatar });
                     } else {
-                        res.status(422).send({ error: 'Failed to login!' });
+                       return res.status(422).send({ error: 'Failed to login!' });
                     }
                 })
         })

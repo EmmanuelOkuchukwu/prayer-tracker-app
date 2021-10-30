@@ -2,33 +2,44 @@ const mongoose = require('mongoose');
 const Profile = mongoose.model('profile');
 
 const createProfile = (req, res) => {
-    const { name, age, bio, occupation, links } = req.body;
-    if(!age || !bio) {
-        res.status(422).send({ message: 'Fields are empty' })
+    const { age, bio, occupation, links } = req.body;
+    let profileValues = {};
+    profileValues.owner = req.user._id;
+    if(bio) {
+        profileValues.bio = bio;
     }
-    req.user.password = undefined;
-    const profile = new Profile({
-        name,
-        age,
-        bio,
-        occupation,
-        links,
-        owner: req.user
-    })
-    profile.save().then((saveProfile) => {
-        res.status(201).json(saveProfile)
-    }).catch((error) => {
-        console.log(error);
-        res.status(401).json({ error: error });
+    if(age) {
+        profileValues.age = age;
+    }
+    if(occupation) {
+        profileValues.occupation = occupation;
+    }
+    if(links) {
+        profileValues.links = links;
+    }
+    let profile = Profile.findOne({ owner: req.user._id })
+    if(profile) {
+        profile = Profile.findOneAndUpdate({ owner: req.user._id })
+        .then(() => {
+            return res.status(200).json(profile);
+        }).catch((error) => {
+            return res.status(500).json({message: error});
+        })
+    }
+    profile = new Profile(profileValues)
+    profile.save().then((savedProfile) => {
+        res.status(201).json(savedProfile);
+    }, (error) => {
+        console.log('Error:', error);
+        return res.status(500).send({message: error});
     })
 }
 
 const getMyProfile = (req, res) => {
     Profile.findOne({ owner: req.user._id })
-    .populate("owner","_id")
+    .populate("owner","_id name avatar")
     .then(myProfile => {
         res.status(200).send(myProfile);
-        console.log(req.user)
     }).catch((error) => {
         res.status(422).send({ error: error })
         console.log(error);

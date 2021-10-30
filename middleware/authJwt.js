@@ -9,14 +9,18 @@ module.exports = (req, res, next) => {
         return res.status(401).send({ error: 'You need to be logged in to have access!' });
     }
     const token = authorization.replace("Bearer ","");
-    jwt.verify(token, SECRET_KEY, (error, payload) => {
-        if(error) {
-            return res.status(401).send({ error: 'You need to be logged in to have access!' })
-        }
-        const { _id } = payload;
-        User.findById(_id).then(userInfo => {
-            req.user = userInfo;
-            next();
+    try {
+        jwt.verify(token, SECRET_KEY, (error, payload) => {
+            if(error) {
+                return res.status(401).send({ error: 'You need to be logged in to have access!' })
+            }
+            const { _id } = payload;
+            User.findById(_id).then(userInfo => {
+                req.user = userInfo;
+                next();
+            })
         })
-    })
+    } catch(e) {
+        res.status(401).json({ msg: e });
+    }
 }
