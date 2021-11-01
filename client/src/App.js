@@ -10,6 +10,7 @@ import Login from './pages/auth/login';
 import { AuthService } from './service/authService';
 import Register from './pages/auth/register';
 import Profile from "./pages/dashboard/Profile";
+import LandingPage from './pages/dashboard/landingPage';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,6 +24,7 @@ function App() {
     <div className="app">
       {jwt ? <Navigationbar jwt={jwt} /> : ''}
       <Switch>
+        <Route path="/landing" component={LandingPage} />
         <Route exact path="/" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/task-center" component={TaskCenter} />
