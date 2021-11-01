@@ -9,7 +9,7 @@ import Navigationbar from './component/Navigation';
 import Login from './pages/auth/login';
 import { AuthService } from './service/authService';
 import Register from './pages/auth/register';
-import Profile from "./pages/dashboard/Profile";
+import Profile from './pages/dashboard/Profile';
 import LandingPage from './pages/dashboard/landingPage';
 
 function App() {
