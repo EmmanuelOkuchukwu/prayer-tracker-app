@@ -24,8 +24,8 @@ function App() {
     <div className="app">
       {jwt ? <Navigationbar jwt={jwt} /> : ''}
       <Switch>
-        <Route path="/landing" component={LandingPage} />
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/task-center" component={TaskCenter} />
         <Route path="/add-task" component={AddTask} />

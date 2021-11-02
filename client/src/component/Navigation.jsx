@@ -20,7 +20,7 @@ const Navigationbar = () => {
     const handleLogout = (evt) => {
         evt.preventDefault();
         AuthService.onLogout();
-        history.push('/');
+        history.push('/login');
     }
     return (
         <Navbar collapseOnSelect bg="dark" expand="lg" variant="dark">

@@ -31,7 +31,7 @@ const readAll = (req, res) => {
             res.status(200).json(results);
         }, (error) => {
             console.log(error);
-            return res.status(401).json(error);
+            return res.status(404).json(error);
         })
 }
 const readOne = (req, res) => {
@@ -40,7 +40,7 @@ const readOne = (req, res) => {
             res.status(200).json(result)
         }, error => {
             console.log(error);
-            return res.status(401).json(error);
+            return res.status(404).json(error);
         })
 }
 const readMyTasks = (req, res) => {

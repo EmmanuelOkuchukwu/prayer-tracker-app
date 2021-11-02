@@ -37,12 +37,15 @@ function Profile() {
                         <span>
                             <p>Full Name: {user?.owner?.name}</p>
                         </span>
+                        <hr />
                         <span>
                             <p>Biography: {user?.bio}</p>
                         </span>
+                        <hr />
                         <span>
                             <p>Job Title: {user?.occupation}</p>
                         </span>
+                        <hr />
                         <span>
                             <p>Your Age: {user?.age}</p>
                         </span>

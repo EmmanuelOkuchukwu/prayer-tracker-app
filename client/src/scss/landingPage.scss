@@ -1,8 +1,9 @@
 .banner-container {
   //margin: 40px 0;
   height: 550px;
-  background-image: url('../assets/book-4126483.jpg');
+  background-image: url('../assets/earth-3537401.jpg');
   background-position: left;
+  background-size: cover;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -42,7 +43,7 @@
   .signin-button {
     padding: 10px;
     background-color: #DCE1E3;
-    border-radius: 50px;
+    border-radius: 5px;
     cursor: pointer;
     &:hover {
       transition: all 0.2s ease-in-out;
@@ -53,7 +54,7 @@
   .signup-button {
     padding: 10px;
     background-color: #DCE1E3;
-    border-radius: 50px;
+    border-radius: 5px;
     cursor: pointer;
     &:hover {
       transition: all 0.2s ease-in-out;
