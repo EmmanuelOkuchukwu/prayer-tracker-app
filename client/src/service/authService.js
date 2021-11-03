@@ -28,11 +28,22 @@ function onLogout() {
     currentUserSubject.next(null);
 }
 
+function onRegister(inputFields) {
+    return axios.post(`${API_URL}/auth/v1/register`, inputFields, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }).then((response) => {
+        return response;
+    }).catch((error) => console.log(error));
+}
+
 export const AuthService = {
     onLogin,
     onLogout,
     currentUser: currentUserSubject.asObservable(),
     get currentUserValue() {
         return currentUserSubject.value
-    }
+    },
+    onRegister
 }
