@@ -5,13 +5,18 @@ import LearnBackground from '../../assets/learn-2001847_1920.jpg';
 import BulbsBackground from '../../assets/bulbs-4550601_1920.jpg';
 import BoardBackground from '../../assets/board-3699939_1920.jpg';
 import Fundamentals from '../../assets/fundamentals.svg';
-import Navigationbar from "../../component/Navigation";
+import { AuthService } from '../../service/authService';
+import { Redirect } from 'react-router-dom';
 
 export default function LandingPage() {
     const history = useHistory();
+    if(AuthService.currentUserValue) {
+        return (
+            <Redirect to={{ pathname: '/task-center' }} />
+        );
+    }
     return (
         <div>
-            <Navigationbar />
             <div className="banner-container">
                 <div className="signin-signup-container">
                     <h1>Task Tracker App</h1>
@@ -68,7 +73,7 @@ export default function LandingPage() {
             </div>
             <div className="lectures">
                 <div className="main-container">
-                    <h3>Meet Your Lecturers</h3>
+                    <h3>About the Developer</h3>
                 </div>
             </div>
         </div>

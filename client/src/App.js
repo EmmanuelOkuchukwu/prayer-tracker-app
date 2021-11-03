@@ -11,6 +11,7 @@ import { AuthService } from './service/authService';
 import Register from './pages/auth/register';
 import Profile from './pages/dashboard/Profile';
 import LandingPage from './pages/dashboard/landingPage';
+import { PrivateRoute } from './util/privateRouteUtil';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,10 +28,10 @@ function App() {
         <Route exact path="/" component={LandingPage} />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/task-center" component={TaskCenter} />
-        <Route path="/add-task" component={AddTask} />
-        <Route path="/update-task/:id" component={UpdateTask} />
-        <Route path="/profile" component={Profile} />
+        <PrivateRoute path="/task-center" component={TaskCenter} />
+        <PrivateRoute path="/add-task" component={AddTask} />
+        <PrivateRoute path="/update-task/:id" component={UpdateTask} />
+        <PrivateRoute path="/profile" component={Profile} />
       </Switch>
     </div>
   );

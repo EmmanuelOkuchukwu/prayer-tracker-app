@@ -97,12 +97,4 @@ const deleteAll = (req, res) => {
         })
 }
 
-module.exports = {
-    create,
-    readAll,
-    readOne,
-    readMyTasks,
-    update,
-    deleteOneTask,
-    deleteAll
-};
+module.exports = { create, readAll, readOne, readMyTasks, update, deleteOneTask, deleteAll };
