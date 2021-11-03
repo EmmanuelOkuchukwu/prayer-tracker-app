@@ -21,10 +21,10 @@ function TaskCenter() {
     }, [])
 
     function getTasks() {
-        TaskService.fetchTasks()
+        TaskService.fetchMyTasks()
             .then((results) => {
-                setTasks(results);
-                console.log(results);
+                setTasks(results.data);
+                console.log(results.data);
                 setLoading(true);
             }, (error) => {
                 console.log(error);
@@ -81,9 +81,11 @@ function TaskCenter() {
                     </div>
                 </Card.Header>
                 <Card.Body>
-                    <p>Content: {task.description}</p>
+                    <p>Description:</p>
+                    <p>{task.description}</p>
+                    <hr />
                     <p>Status: {task.completed ? <i className="fas fa-check-circle" /> : <i className="fas fa-times" />}</p>
-                    <p>Date Created: {moment(task.createdAt).format('MMMM Do YYYY')}</p>
+                    <p>Due Date: {moment(task.dueDate).format('MMMM Do YYYY')}</p>
                 </Card.Body>
             </Card>
         )): <p>No Tasks found!</p>}

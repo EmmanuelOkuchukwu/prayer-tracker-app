@@ -11,7 +11,8 @@ function UpdateTask() {
     const initialValue = {
         title: '',
         description: '',
-        completed: false
+        completed: false,
+        dueDate: ''
     }
     const [editTodo, setEditTodo] = useState(initialValue);
     const [loading, setLoading] = useState(false);
@@ -36,7 +37,8 @@ function UpdateTask() {
         const formData = {
             title: editTodo?.title,
             description: editTodo?.description,
-            completed: status
+            completed: status,
+            dueDate: editTodo?.dueDate,
         }
         TaskService.onUpdateTask(id, formData)
         .then((results) => {
@@ -92,6 +94,8 @@ function UpdateTask() {
                         <Form.Control type="text" name="title" value={editTodo?.title} onChange={handleChange} /><br />
                         <Form.Label>Description:</Form.Label>
                         <Form.Control as="textarea" type="text" name="description" value={editTodo?.description} onChange={handleChange} col="5" rows="5" /><br />
+                        <Form.Label>Due Date:</Form.Label>
+                        <Form.Control type="date" name="dueDate" value={editTodo?.dueDate} onChange={handleChange} /><br />
                         <div><label>Status:</label>{' '}{editTodo?.completed ? <span>Completed</span> : <span>Not Completed</span>}</div>
                         <Form.Control type="submit" value={!loading ? 'Update' : 'Loading...'} variant="success" />
                     </Form>

@@ -13,7 +13,8 @@ function AddTask() {
     const SimpleValidator = useRef(new SimpleReactValidator());
     const initialValue = {
         title: '',
-        description: ''
+        description: '',
+        dueDate: ''
     }
     const [todoData, setTodoData] = useState(initialValue);
     const [isLoading, setIsLoading] = useState(false);
@@ -29,7 +30,8 @@ function AddTask() {
             const formData = {
                 title: todoData.title,
                 description: todoData.description,
-                completed: false
+                completed: false,
+                dueDate: todoData.dueDate,
             }
             TaskService.onCreateTask(formData)
                 .then((response) => {
@@ -64,6 +66,7 @@ function AddTask() {
                             {SimpleValidator.current.message('title', todoData.title, 'required', { className: 'text-danger' })}<br />
                             <Form.Control as="textarea" name="description" value={todoData.description} onChange={handleChange} placeholder="Write your Description here..." rows="4" cols="50" />
                             {SimpleValidator.current.message('description', todoData.description, 'required', { className: 'text-danger' })}<br />
+                            <Form.Control type="date" name="dueDate" value={todoData.dueDate} onChange={handleChange} /><br />
                             <Form.Control type="submit" disabled={isLoading} value={!isLoading ? 'Add Task' : 'Loading...'} />
                         </Form>
                     </Card.Body>

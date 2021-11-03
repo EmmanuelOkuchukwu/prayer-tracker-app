@@ -25,7 +25,7 @@ async function fetchTasks() {
         const response = await axios.get(`${API_URL}/api/tasks/gettasks`, {
             headers: AuthHeader()
         });
-        return response.data;
+        return response;
     } catch(e) {
         console.log(e)
     }
@@ -47,7 +47,7 @@ async function fetchMyTasks() {
         const result = await axios.get(`${API_URL}/api/tasks/readMyTasks`, {
             headers: AuthHeader()
         })
-        return result.data;
+        return result;
     } catch(e) {
 
     }
@@ -89,6 +89,7 @@ async function onDeleteTasks(id) {
 export const TaskService = {
     fetchTasks,
     fetchTask,
+    fetchMyTasks,
     onDeleteTasks,
     onDeleteAll,
     onCreateTask,

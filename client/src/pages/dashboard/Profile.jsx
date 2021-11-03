@@ -6,10 +6,12 @@ import Button from 'react-bootstrap/Button';
 
 function Profile() {
     const [user, setUser] = useState(null);
+    const [showForm, setShowFrom] = useState(false);
     useEffect(() => {
         // AuthService.currentUser.subscribe(x => {
         //     setUser(x)
         // })
+        const handleShowHide = () => setShowFrom(!showForm)
     function fetchProfile() {
         ProfileService.getProfile()
             .then((results) => {
@@ -51,7 +53,9 @@ function Profile() {
                         </span>
                     </div>
                 ) : (
-                    <Button>Create your Profile</Button>
+                    <div className="button-section">
+                        <Button>Create your Profile</Button>
+                    </div>
                 )}
             </div>
         </div>

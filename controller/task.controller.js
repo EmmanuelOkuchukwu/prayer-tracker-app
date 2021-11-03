@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Task = mongoose.model('task');
 
 const create = (req, res) => {
-    const { title, description, completed } = req.body;
+    const { title, description, completed, dueDate } = req.body;
 
-    if(!title || !description) {
+    if(!title || !description || !dueDate) {
         res.status(422).json({ error: 'Field is empty!' });
     }
     req.user.password = undefined;
@@ -12,6 +12,7 @@ const create = (req, res) => {
         title,
         description,
         completed,
+        dueDate,
         createdBy: req.user
     })
     task.save()
