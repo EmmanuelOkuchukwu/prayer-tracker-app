@@ -3,6 +3,7 @@ import '../../scss/profile.scss';
 import { AuthService } from '../../service/authService';
 import { ProfileService } from '../../service/profileService';
 import Button from 'react-bootstrap/Button';
+import CreateProfileForm from "./createProfileForm";
 
 function Profile() {
     const [user, setUser] = useState(null);
@@ -11,7 +12,6 @@ function Profile() {
         // AuthService.currentUser.subscribe(x => {
         //     setUser(x)
         // })
-        const handleShowHide = () => setShowFrom(!showForm)
     function fetchProfile() {
         ProfileService.getProfile()
             .then((results) => {
@@ -23,6 +23,7 @@ function Profile() {
     }
     return fetchProfile()
     }, [])
+    const handleShowHide = () => setShowFrom(!showForm)
     return (
         <div className="profile-container">
             <div className="profile-wrapper">
@@ -54,7 +55,9 @@ function Profile() {
                     </div>
                 ) : (
                     <div className="button-section">
-                        <Button>Create your Profile</Button>
+                        {!showForm ? <Button onClick={handleShowHide}>Create your Profile</Button> : (
+                            <CreateProfileForm handleShowHide={handleShowHide} />
+                        )}
                     </div>
                 )}
             </div>
