@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Profile = mongoose.model('profile');
+const User = mongoose.model('user');
+const Task = mongoose.model('task');
 
 const createProfile = (req, res) => {
     const { age, bio, occupation, links } = req.body;
@@ -46,4 +48,17 @@ const getMyProfile = (req, res) => {
     })
 }
 
-module.exports = { createProfile, getMyProfile };
+const deleteUser = async (req, res) => {
+    try {
+        const user = User.findOne(req.user._id)
+        await Profile.deleteOne({ user: req.user._id });
+        await User.deleteOne({ _id: req.user._id });
+        await Task.deleteMany({ owner: req.user._id });
+        res.status(200).json(user)
+        console.log(user)
+    } catch(e) {
+        res.status(500).json({ message: e });
+        console.log(e)
+    }
+}
+module.exports = { createProfile, getMyProfile, deleteUser };

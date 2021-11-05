@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const User = mongoose.model('user');
+const Profile = mongoose.model('profile');
+const Task = mongoose.model('task');
 
 const deleteUser = (req, res) => {
     const _id = req.params;
