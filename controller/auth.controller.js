@@ -27,7 +27,9 @@ const register = (req, res) => {
                     })
                     user.save()
                         .then((savedUser) => {
-                                res.status(201).send({ message: 'User has been successfully registered!' });
+                            const { _id } = savedUser;
+                            const token = jwt.sign({ email, _id }, SECRET_KEY)
+                            res.status(201).send({ token });
                         })
                         .catch((error) => {
                             res.status(422).send({ error: error });

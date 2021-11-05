@@ -34,6 +34,10 @@ function onRegister(inputFields) {
             'Content-Type': 'application/json'
         }
     }).then((response) => {
+        if(response.data.token) {
+            setUserInfo(response.data);
+            currentUserSubject.next(response.data);
+        }
         return response;
     }).catch((error) => console.log(error));
 }

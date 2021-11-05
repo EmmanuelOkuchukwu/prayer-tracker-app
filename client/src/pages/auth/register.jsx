@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useHistory } from 'react-router-dom';
+import {AuthService} from "../../service/authService";
 
 function Register() {
     const history = useHistory();
@@ -17,10 +18,25 @@ function Register() {
         const { name, value } = evt.target
         setRegisterValue({ ...registerValue, [name]: value })
     }
+    const inputFields = {
+        name: registerValue.name,
+        email: registerValue.email,
+        username: registerValue.username,
+        password: registerValue.password
+    }
+    function handleRegister(evt) {
+        evt.preventDefault();
+        AuthService.onRegister(inputFields).then((run) => {
+            console.log(run);
+            history.push('/profile');
+        }, (error) => {
+            console.log(error);
+        })
+    }
     return(
         <div className="register-container">
             <div className="register-background">
-                <Form className="register-form">
+                <Form className="register-form" onSubmit={handleRegister}>
                     <h1>Register</h1>
                     <hr />
                     <Form.Label htmlFor="name">Name:</Form.Label>
