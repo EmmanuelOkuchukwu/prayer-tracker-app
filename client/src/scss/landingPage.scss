@@ -1,3 +1,5 @@
+@import 'App';
+
 .banner-container {
   //margin: 40px 0;
   height: 500px;
@@ -80,6 +82,7 @@
   height: auto;
   border-radius: 4px;
   margin-bottom: 10px;
+  border: solid 1px $secondaryColor;
   .img-responsive {
     width: 100%;
     height: auto;

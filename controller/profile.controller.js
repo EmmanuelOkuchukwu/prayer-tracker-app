@@ -3,6 +3,7 @@ const Profile = mongoose.model('profile');
 const User = mongoose.model('user');
 const Task = mongoose.model('task');
 
+//TODO: change this block of code and test that out
 const createProfile = (req, res) => {
     const { age, bio, occupation, links } = req.body;
     let profileValues = {};
