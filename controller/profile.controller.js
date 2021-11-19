@@ -32,6 +32,7 @@ const createProfile = (req, res) => {
     profile = new Profile(profileValues)
     profile.save().then((savedProfile) => {
         res.status(201).json(savedProfile);
+        console.log(req.user._id)
     }, (error) => {
         console.log('Error:', error);
         return res.status(500).send({message: error});
