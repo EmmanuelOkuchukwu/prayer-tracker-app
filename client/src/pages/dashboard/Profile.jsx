@@ -29,7 +29,7 @@ function Profile() {
             <div className="profile-wrapper">
                 <div className="profile-header">
                     <h1>Profile</h1>
-                    {user? <Button variant="success">Edit Profile</Button> : ''}
+                    {/*{user? <Button variant="success">Edit Profile</Button> : ''}*/}
                 </div>
                 <hr />
                 {user ? (

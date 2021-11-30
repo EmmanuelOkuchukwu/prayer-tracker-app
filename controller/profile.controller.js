@@ -20,16 +20,7 @@ const createProfile = (req, res) => {
     if(links) {
         profileValues.links = links;
     }
-    let profile = Profile.findOne({ owner: req.user._id })
-    if(profile) {
-        profile = Profile.findOneAndUpdate({ owner: req.user._id })
-        .then(() => {
-            return res.status(200).json(profile);
-        }).catch((error) => {
-            return res.status(500).json({message: error});
-        })
-    }
-    profile = new Profile(profileValues)
+    const profile = new Profile(profileValues)
     profile.save().then((savedProfile) => {
         res.status(201).json(savedProfile);
         console.log(req.user._id)
