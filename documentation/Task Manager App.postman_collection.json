@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "e90d08f9-35c7-4a1a-b1c2-014cc1be6dde",
+		"name": "Task Manager App",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8081/auth/v1/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"Jane.porter@gmail.com\",\r\n    \"password\": \"Password@123?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/auth/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/profile/createprofile",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtbWFuemEyQGdtYWlsLmNvbSIsIl9pZCI6IjYxN2JmZmUwYzgwZmZhYzljY2IzNzY5NCIsImlhdCI6MTYzNTYwNjY3NH0.o36kztS9VTgZnQ4bipfW1HKbqdDgPayX0EnDnhHxUBg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"age\": 26,\r\n    \"bio\": \"I love JavaScript\",\r\n    \"occupation\": \"Web Developer\",\r\n    \"links\": [\"https://github.com/EmmanuelOkuchukwu\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/profile/createprofile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"profile",
+						"createprofile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/user/v1/getuser/me",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkphbmUucG9ydGVyQGdtYWlsLmNvbSIsIl9pZCI6IjYxOTdiODVhMTAwNTdkMTNlZjA2YTNjMiIsImlhdCI6MTYzNzQ0NTIyM30.-7pYwK3NPtDx5M_x-9kA8rwUiJ4p9vBXR6pDw9H_-40",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/user/v1/getuser/me",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"user",
+						"v1",
+						"getuser",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/profile/getMyProfile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtbWFuemEyQGdtYWlsLmNvbSIsIl9pZCI6IjYxN2JmZmUwYzgwZmZhYzljY2IzNzY5NCIsImlhdCI6MTYzNTYwNDgyOX0.NN6mhndgUoNzQDJa5o9zZ8K0GxsqjLmoF9X5zTIPEak",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/profile/getMyProfile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"profile",
+						"getMyProfile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/tasks/createtasks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtbWFuemEyQGdtYWlsLmNvbSIsIl9pZCI6IjYxOTQzYjg0MjBkNjVhOWM3ZDY5ODcwYyIsImlhdCI6MTYzODMwNzg3N30.aRKwIEmbJCFIYAzc6ZVG8Wc-7Y2s5uKe0ABtVNujr2A",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Hello World!\",\r\n    \"description\": \"Ljkhdflj jlhfdjfgv jfbjkfd jfk;g;fl.\",\r\n    \"completed\": false,\r\n    \"dueDate\": \"2021-12-01\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/tasks/createtasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tasks",
+						"createtasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/auth/v1/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Emmanuel Okuchukwu\",\r\n    \"email\": \"emmanza2@gmail.com\",\r\n    \"username\": \"emmanz95\",\r\n    \"password\": \"Password@123?\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/auth/v1/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"auth",
+						"v1",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/tasks/readMyTasks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtbWFuemEyQGdtYWlsLmNvbSIsIl9pZCI6IjYxOTQzYjg0MjBkNjVhOWM3ZDY5ODcwYyIsImlhdCI6MTYzODMwNzg3N30.aRKwIEmbJCFIYAzc6ZVG8Wc-7Y2s5uKe0ABtVNujr2A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/tasks/readMyTasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"tasks",
+						"readMyTasks"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
