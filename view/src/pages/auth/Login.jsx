@@ -4,9 +4,10 @@ import CustomInputField from '../../components/customInputFields/CustomInputFiel
 import { LoginBackground, LoginContainer, LoginForm } from './styles';
 import { StyledButton } from '../../components/buttons/styles';
 import auth from '../../API/auth';
-import useCurrentUser from "../../hooks/useCurrentUser";
+import { useNavigate } from 'react-router-dom'
 
 function Login() {
+    const navigate = useNavigate()
     const initialState = {
         email: '',
         password: ''
@@ -29,6 +30,7 @@ function Login() {
             password: loginValues.password
         }
         auth.onLogin(formData).then((loginResults) => {
+            navigate('/dashboard');
             console.log(loginResults);
         }).catch((error) => console.log(error));
     }

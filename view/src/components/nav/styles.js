@@ -12,6 +12,9 @@ export const NavbarWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  h2 {
+    margin: 0 30px;
+  }
 `;
 
 export const UnorderedList = styled.ul`
@@ -31,5 +34,16 @@ export const UnorderedList = styled.ul`
       color: #000;
       transition: all ease-in-out 0.2s;
     }
+  }
+  .img-button {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0 30px;
+  }
+  .profile-img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
   }
 `;
