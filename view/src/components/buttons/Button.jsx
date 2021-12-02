@@ -1,8 +1,9 @@
 import React from 'react';
+import { StyledButton } from './styles';
 
-const Button = () => {
+const Button = ({ type, value }) => {
     return (
-        <div></div>
+        <StyledButton type={type} value={value} />
     );
 }
 

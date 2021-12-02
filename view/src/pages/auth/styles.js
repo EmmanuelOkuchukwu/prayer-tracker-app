@@ -10,10 +10,14 @@ export const LoginContainer = styled.main`
 `;
 
 export const LoginBackground = styled.div`
-  height: 350px;
+  height: 370px;
   width: 320px;
   border: 1px solid ${props => props.theme.secondary};
   border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.75);
 `;
 
 export const LoginForm = styled.form`
@@ -24,6 +28,9 @@ export const LoginForm = styled.form`
     position: relative;
     left: 220px;
     bottom: 26px;
+  }
+  span {
+    color: red;
   }
 `;
 
