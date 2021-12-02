@@ -18,7 +18,7 @@ function Login() {
                     <CustomInputField type="text" name="email" placeholder="John.Doe@gmail.com" /><br/>
                     <label htmlFor="password">Password:</label>
                     <CustomInputField type={showHidePassword ? "text" : "password"} name="password" placeholder="XXXXXXXXXXXXXXX" />
-                    <a href="" onClick={displayPassword}>{showHidePassword ? <i className="fas fa-eye" />: <i className="fas fa-eye-slash" />}</a>
+                    <a href="" className="eye-icon" onClick={displayPassword}>{showHidePassword ? <i className="fas fa-eye" />: <i className="fas fa-eye-slash" />}</a>
                 </LoginForm>
             </LoginBackground>
         </LoginContainer>

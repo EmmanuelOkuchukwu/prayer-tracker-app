@@ -19,6 +19,12 @@ export const LoginBackground = styled.div`
 export const LoginForm = styled.form`
   padding: 35px;
   height: 150px;
+  position: relative;
+  .eye-icon {
+    position: relative;
+    left: 220px;
+    bottom: 26px;
+  }
 `;
 
 /* - - - - - - - - - - - - - - - - - - - - Register Styles - - - - - - - - - - - - - - - - - - - - - */
