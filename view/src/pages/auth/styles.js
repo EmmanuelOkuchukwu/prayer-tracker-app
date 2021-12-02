@@ -7,6 +7,7 @@ export const LoginContainer = styled.main`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 `;
 
 export const LoginBackground = styled.div`
@@ -31,6 +32,12 @@ export const LoginForm = styled.form`
   }
   span {
     color: red;
+  }
+  h4 {
+    color: #583088;
+  }
+  label {
+    color: #583088;
   }
 `;
 

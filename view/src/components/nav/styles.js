@@ -4,9 +4,9 @@ export const NavbarWrapper = styled.nav`
   background-color: ${props => props.theme.primary};
   margin: 0;
   width: 100%;
-  -webkit-box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.75);
-  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 0 3px 5px 0 #583088;
+  -moz-box-shadow: 0 3px 5px 0 #583088;
+  box-shadow: 0 3px 5px 0 #583088;
   overflow: hidden;
   list-style: none;
   display: flex;

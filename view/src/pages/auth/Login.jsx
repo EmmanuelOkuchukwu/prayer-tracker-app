@@ -37,9 +37,13 @@ function Login() {
 
     return (
         <LoginContainer>
+            <h2>
+                <i className="fas fa-tasks" /> Task Manager
+            </h2>
             <LoginBackground>
                 <LoginForm onSubmit={handleLogin}>
-                    <h4>Task Manager</h4>
+                    <h4>Login</h4>
+                    <hr />
                     <label htmlFor="email">Email<span>*</span></label>
                     <CustomInputField type="text" name="email" value={loginValues.email} onChange={handleChange} placeholder="John.Doe@gmail.com" /><br/>
                     <label htmlFor="password">Password<span>*</span></label>
