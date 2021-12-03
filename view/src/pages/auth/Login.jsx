@@ -4,7 +4,7 @@ import CustomInputField from '../../components/customInputFields/CustomInputFiel
 import { LoginBackground, LoginContainer, LoginForm } from './styles';
 import { StyledButton } from '../../components/buttons/styles';
 import auth from '../../API/auth';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Navigate } from 'react-router-dom'
 
 function Login() {
     const navigate = useNavigate()
@@ -14,6 +14,7 @@ function Login() {
     }
     const [loginValues, setLoginValues] = useState(initialState);
     const [showHidePassword, setShowHidePassword] = useState(false);
+    const [loading, setLoading] = useState(false);
     function displayPassword(evt) {
         evt.preventDefault();
         setShowHidePassword(!showHidePassword);
@@ -33,6 +34,10 @@ function Login() {
             navigate('/dashboard');
             console.log(loginResults);
         }).catch((error) => console.log(error));
+    }
+
+    if(auth.getCurrentUser()) {
+        return <Navigate to={{ pathname: '/dashboard' }} />
     }
 
     return (
