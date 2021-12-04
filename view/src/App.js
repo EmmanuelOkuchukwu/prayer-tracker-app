@@ -7,6 +7,7 @@ import Register from './pages/auth/Register';
 import Dashboard from './pages/dashboard/Dashboard';
 import auth from './API/auth';
 import { history } from './HistoryUtil';
+import CreateTask from './pages/dashboard/CreateTask';
 
 function App() {
     const currentUser = auth.getCurrentUser();
@@ -22,6 +23,7 @@ function App() {
                     <Route exact path="/" element={ <Login /> } />
                     <Route path="/register" element={ <Register /> } />
                     <Route path='/dashboard' element={ <Dashboard /> } />
+                    <Route path="/create-task" element={ <CreateTask /> } />
                 </Routes>
             </Fragment>
         </Router>

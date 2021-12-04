@@ -15,3 +15,15 @@ export const InputField = styled.input`
     transition: all 0.1s ease-in-out;
   }
 `
+
+export const TextArea = styled.textarea`
+  width: 100%;
+  padding: 10px;
+  border: solid 1px #ddd;
+  border-radius: 5px;
+  position: relative;
+  &:focus {
+    outline: 2px solid #583088;
+    transition: all 0.1s ease-in-out;
+  }
+`;

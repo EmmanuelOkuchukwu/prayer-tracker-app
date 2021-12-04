@@ -8,6 +8,10 @@ export const TaskContainer = styled.main`
   margin: 40px auto;
   border: 1px solid #ddd;
   height: 70vh;
+  display: flex;
+  h3 {
+    margin: 10px;
+  }
   hr {
     color: #DDDDDD;
   }
@@ -22,29 +26,13 @@ export const TaskContainer = styled.main`
     border-radius: 10%;
     padding: 8px 15px;
     cursor: pointer;
+    margin: 0 10px;
     &:hover {
       background-color: ${props => props.theme.main};
       color: ${props => props.theme.primary};
       transition: all 0.2s ease-in-out;
     }
   }
-  // .task-panel {
-  //   width: 98.3%;
-  //   height: 100%;
-  //   border: 1px solid ${props => props.theme.secondary};
-  //   border-radius: 5px;
-  //   margin: 10px;
-  //   padding: 0 5px;
-  //   display: flex;
-  //   justify-content: space-between;
-  //   align-items: center;
-  //   .fa-check-circle {
-  //     color: green;
-  //   }
-  //   .fa-times {
-  //     color: red;
-  //   }
-  // }
   .tasks-not-found {
     text-align: center;
     padding: 15px;
@@ -56,5 +44,25 @@ export const TaskContainer = styled.main`
   }
   .fa-trash {
     cursor: pointer;
+  }
+`;
+
+/* - - - - - - - - - - - - - - - - - - - - - -Create Task Component - - - - - - - - - - - - - - - - - - - - - - - - - */
+
+export const FormWrapper = styled.form`
+  width: 100%;
+  padding: 0 70px;
+  .create-btn {
+    border: 1px solid ${props => props.theme.main};
+    border-radius: 4px;
+    padding: 10px;
+    background-color: ${props => props.theme.primary};
+    cursor: pointer;
+    width: 100%;
+    &:hover {
+      background-color: ${props => props.theme.main};
+      transition: all 0.2s ease-in-out;
+      color: ${props => props.theme.primary};
+    }
   }
 `;

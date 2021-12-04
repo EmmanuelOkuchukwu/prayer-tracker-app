@@ -15,6 +15,14 @@ export const NavbarWrapper = styled.nav`
   h2 {
     margin: 0 30px;
   }
+  .nav-align {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+  }
 `;
 
 export const UnorderedList = styled.ul`

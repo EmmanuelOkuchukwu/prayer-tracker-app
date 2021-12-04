@@ -17,14 +17,10 @@ const taskSchema = new mongoose.Schema({
     completed: {
         type: Boolean
     },
-    createdAt: {
-        type: Date,
-        default: Date.now()
-    },
     createdBy: {
         type: ObjectId,
         ref: 'user'
     }
-})
+}, { timestamps: true })
 
 mongoose.model('task', taskSchema);
