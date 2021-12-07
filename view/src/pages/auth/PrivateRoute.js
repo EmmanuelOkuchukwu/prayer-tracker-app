@@ -1,13 +1,14 @@
 import React from 'react';
-import { Navigate, Route } from 'react-router-dom';
-import auth from "../../API/auth";
+import { Navigate, useLocation } from 'react-router-dom';
+import auth from '../../API/auth';
 
-export const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route {...rest} render={props => {
-        const currentUser = auth.getCurrentUser();
-        if(!currentUser) {
-            return (<Navigate to={{ pathname: "/", state: { from: props.location } }} />)
-        }
-        return <Component {...props} />
-    }} />
-);
+export const PrivateRoute = ({ children }) => {
+    let currentUser = auth.getCurrentUser();
+    let location = useLocation();
+
+    if (!currentUser) {
+        return <Navigate to="/" state={{ from: location }} />;
+    }
+
+    return children;
+};
