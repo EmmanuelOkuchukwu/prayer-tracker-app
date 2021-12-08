@@ -21,9 +21,9 @@ export const LoginBackground = styled.div`
   -moz-box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.75);
 `;
 
-export const LoginForm = styled.form`
+export const Form = styled.form`
   padding: 35px;
-  height: 150px;
+  height: 100%;
   position: relative;
   .eye-icon {
     position: relative;
@@ -43,4 +43,21 @@ export const LoginForm = styled.form`
 
 /* - - - - - - - - - - - - - - - - - - - - Register Styles - - - - - - - - - - - - - - - - - - - - - */
 
-export const RegisterContainer = styled.main``;
+export const RegisterContainer = styled.main`
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+export const RegisterBackground = styled.div`
+  height: 470px;
+  width: 320px;
+  border: 1px solid ${props => props.theme.secondary};
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.75);
+`;

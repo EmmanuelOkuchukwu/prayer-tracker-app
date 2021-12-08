@@ -9,6 +9,7 @@ import CreateTask from './pages/dashboard/CreateTask';
 import Home from './pages/Home/Home';
 import { PrivateRoute } from './pages/auth/PrivateRoute';
 import UpdateTask from './pages/dashboard/UpdateTask';
+import Profile from "./pages/profile/Profile";
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
                     <Route exact path="/" element={ <Home /> } />
                     <Route path="/login" element={ <Login /> } />
                     <Route path="/register" element={ <Register /> } />
-                    <Route path='/dashboard' element={ <PrivateRoute> <Dashboard /> </PrivateRoute> } />
+                    <Route path='/dashboard' element={ <PrivateRoute><Dashboard /></PrivateRoute> } />
+                    <Route path="/profile" element={ <PrivateRoute><Profile /></PrivateRoute> } />
                     <Route path="/create-task" element={ <PrivateRoute><CreateTask /></PrivateRoute> } />
                     <Route path="/update-task/:id" element={ <PrivateRoute><UpdateTask /></PrivateRoute> } />
                 </Routes>

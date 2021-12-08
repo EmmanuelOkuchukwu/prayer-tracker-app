@@ -17,6 +17,7 @@ export const LinkBtn = styled.a`
   text-decoration: none;
   border-radius: 4px;
   width: 100%;
+  margin: 10px;
   &:hover {
     background-color: ${props => props.theme.main};
     color: #F6F8F9;

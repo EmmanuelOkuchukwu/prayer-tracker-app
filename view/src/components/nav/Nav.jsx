@@ -12,10 +12,10 @@ const Nav = () => {
         auth.onLogout();
         navigate('/');
     }
-    return (    
+    return (
         <NavbarWrapper>
             <div className="nav-align">
-                <h2>Task Manager</h2>
+                <h2 onClick={() => navigate('/')}>Task Manager</h2>
                 <UnorderedList>
                     {!currentUser ? (
                         <li><a href="/register">Register</a></li> &&

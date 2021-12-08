@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Nav from '../../components/nav/Nav';
 import CustomInputField from '../../components/customInputFields/CustomInputField';
-import { LoginBackground, LoginContainer, LoginForm } from './styles';
+import { LoginBackground, LoginContainer, Form } from './styles';
 import { StyledButton } from '../../components/buttons/styles';
 import auth from '../../API/auth';
 import { useNavigate, Navigate } from 'react-router-dom'
@@ -26,6 +26,7 @@ function Login() {
 
     const handleLogin = (evt) => {
         evt.preventDefault();
+        setLoading(true);
         const formData = {
             email: loginValues.email,
             password: loginValues.password
@@ -33,7 +34,11 @@ function Login() {
         auth.onLogin(formData).then((loginResults) => {
             navigate('/dashboard');
             console.log(loginResults);
-        }).catch((error) => console.log(error));
+            setLoading(false);
+        }).catch((error) => {
+            console.log(error);
+            setLoading(false);
+        });
     }
 
     if(auth.getCurrentUser()) {
@@ -46,7 +51,7 @@ function Login() {
                 <i className="fas fa-tasks" /> Task Manager
             </h2>
             <LoginBackground>
-                <LoginForm onSubmit={handleLogin}>
+                <Form onSubmit={handleLogin}>
                     <h4>Login</h4>
                     <hr />
                     <label htmlFor="email">Email<span>*</span></label>
@@ -54,8 +59,8 @@ function Login() {
                     <label htmlFor="password">Password<span>*</span></label>
                     <CustomInputField type={showHidePassword ? "text" : "password"} name="password" value={loginValues.password} onChange={handleChange} placeholder="XXXXXXXXXXXXXXX" />
                     <a href="" className="eye-icon" onClick={displayPassword}>{showHidePassword ? <i className="fas fa-eye" />: <i className="fas fa-eye-slash" />}</a>
-                    <StyledButton type="submit" value="Login" />
-                </LoginForm>
+                    <StyledButton type="submit" disabled={loading} value={!loading ? "Login" : "Loading..."} />
+                </Form>
             </LoginBackground>
         </LoginContainer>
     )

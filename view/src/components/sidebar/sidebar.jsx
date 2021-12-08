@@ -9,7 +9,7 @@ const Sidebar = () => {
                 <li><LinkBtn href="/dashboard">Home</LinkBtn></li><br/>
                 <li><LinkBtn href="/create-task">Add Task</LinkBtn></li>
                 <br/>
-                <li><LinkBtn href="">Profile</LinkBtn></li>
+                <li><LinkBtn href="/profile">Profile</LinkBtn></li>
             </ul>
         </SidebarContainer>
     );
