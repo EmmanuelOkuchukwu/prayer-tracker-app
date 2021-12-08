@@ -6,8 +6,10 @@ import tasks from '../../API/tasks';
 import moment from 'moment';
 import TaskPanel from "../../components/panel/TaskPanel";
 import Sidebar from "../../components/sidebar/sidebar";
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
+    const navigate = useNavigate();
     const { currentUser } = useCurrentUser();
     const [taskData, setTaskData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -36,7 +38,7 @@ function Dashboard() {
                 <div style={{ width: '100%' }}>
                     <div className="task-sub-heading">
                         <h3>{currentUser?.username}'s Tasks</h3>
-                        <button className="btn-add"><i className="fas fa-plus" /></button>
+                        <button className="btn-add" onClick={() => navigate('/create-task')}><i className="fas fa-plus" /></button>
                     </div>
                     <hr />
                     {!loading ?

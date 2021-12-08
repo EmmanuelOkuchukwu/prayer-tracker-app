@@ -6,7 +6,7 @@ const TaskPanel = ({ task }) => {
     return (
         <Panel href="">
             <span style={{ display: 'flex', alignItems: 'center', gridGap: '10px' }}>
-                <i className="fas fa-trash" />
+                {/*<i className="fas fa-trash" />*/}
                 <h4>{task?.title}</h4>
             </span>
             <span style={{ display: 'flex', gridGap: '10px' }}>

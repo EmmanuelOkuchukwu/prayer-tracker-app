@@ -31,13 +31,22 @@ export const HomeHeader = styled.main`
   .btn-get-started{
     padding: 10px;
     border-radius: 4px;
-    border: 1px solid ${props => props.theme.main};
-    background-color: ${props => props.theme.primary};
+    border: 2px solid ${props => props.theme.main};
+    background-color: ${props => props.theme.main};
     cursor: pointer;
+    width: 50%;
+    color: ${props => props.theme.primary};
     &:hover {
-      background-color: ${props => props.theme.main};
-      color: ${props => props.theme.primary};
+      background-color: ${props => props.theme.primary};
       transition: all 0.2s ease-in-out;
+      color: #282c34;
     }
+  }
+  .menu-container {
+    width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 10px;
   }
 `;

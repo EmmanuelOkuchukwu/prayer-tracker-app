@@ -7,28 +7,22 @@ import Register from './pages/auth/Register';
 import Dashboard from './pages/dashboard/Dashboard';
 import CreateTask from './pages/dashboard/CreateTask';
 import Home from './pages/Home/Home';
-import auth from './API/auth';
-import { history } from './HistoryUtil';
 import { PrivateRoute } from './pages/auth/PrivateRoute';
+import UpdateTask from './pages/dashboard/UpdateTask';
 
 function App() {
-    // const currentUser = localStorage.getItem('jwt');
-    // if (!currentUser) {
-    //     history.push('/');
-    // } else {
-    //     history.push('/dashboard');
-    // }
   return (
     <div>
         <GlobalStyles />
         <Router>
             <Fragment>
                 <Routes>
-                    <Route path="/landing" element={ <Home /> } />
-                    <Route exact path="/" element={ <Login /> } />
+                    <Route exact path="/" element={ <Home /> } />
+                    <Route path="/login" element={ <Login /> } />
                     <Route path="/register" element={ <Register /> } />
                     <Route path='/dashboard' element={ <PrivateRoute> <Dashboard /> </PrivateRoute> } />
-                    <Route path="/create-task" element={ <CreateTask /> } />
+                    <Route path="/create-task" element={ <PrivateRoute><CreateTask /></PrivateRoute> } />
+                    <Route path="/update-task" element={ <PrivateRoute><UpdateTask /></PrivateRoute> } />
                 </Routes>
             </Fragment>
         </Router>

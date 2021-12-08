@@ -66,3 +66,6 @@ export const FormWrapper = styled.form`
     }
   }
 `;
+
+/* - - - - - - - - - - - - - - - - - - - - - - Update Task Component - - - - - - - - - - - - - - - - - - - - - - - - - */
+

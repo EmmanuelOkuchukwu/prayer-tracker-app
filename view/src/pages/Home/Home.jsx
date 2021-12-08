@@ -18,7 +18,7 @@ function Home() {
             </div>
             <div className="menu-container">
                 <button className="btn-get-started" onClick={() => navigate('/register')}>Get Started!</button>{' '}
-                <button className="btn-get-started" onClick={() => navigate('/')}>Login</button>
+                <button className="btn-get-started" onClick={() => navigate('/login')}>Login</button>
             </div>
         </HomeHeader>
     );
