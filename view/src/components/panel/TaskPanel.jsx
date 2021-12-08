@@ -4,7 +4,7 @@ import moment from 'moment';
 
 const TaskPanel = ({ task }) => {
     return (
-        <Panel href="">
+        <Panel href={`update-task/${task._id}`}>
             <span style={{ display: 'flex', alignItems: 'center', gridGap: '10px' }}>
                 {/*<i className="fas fa-trash" />*/}
                 <h4>{task?.title}</h4>

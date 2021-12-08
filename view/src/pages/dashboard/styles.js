@@ -65,6 +65,11 @@ export const FormWrapper = styled.form`
       color: ${props => props.theme.primary};
     }
   }
+  .update-header-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 /* - - - - - - - - - - - - - - - - - - - - - - Update Task Component - - - - - - - - - - - - - - - - - - - - - - - - - */

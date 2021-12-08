@@ -22,7 +22,7 @@ function App() {
                     <Route path="/register" element={ <Register /> } />
                     <Route path='/dashboard' element={ <PrivateRoute> <Dashboard /> </PrivateRoute> } />
                     <Route path="/create-task" element={ <PrivateRoute><CreateTask /></PrivateRoute> } />
-                    <Route path="/update-task" element={ <PrivateRoute><UpdateTask /></PrivateRoute> } />
+                    <Route path="/update-task/:id" element={ <PrivateRoute><UpdateTask /></PrivateRoute> } />
                 </Routes>
             </Fragment>
         </Router>
