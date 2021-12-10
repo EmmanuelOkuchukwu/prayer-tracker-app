@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Nav from '../../components/nav/Nav';
 import Sidebar from '../../components/sidebar/sidebar';
-import { ProfileContainer, MainContainer } from '../profile/styles';
+import {ProfileContainer, MainContainer, UserInfoContainer} from '../profile/styles';
 import profile from "../../API/profile";
+import SideMenu from "../../components/sideMenu/SideMenu";
 
 function Profile() {
     const [profileData, setProfileData] = useState(null);
@@ -21,33 +22,42 @@ function Profile() {
     return (
         <ProfileContainer>
             <Nav />
+            <SideMenu />
             <MainContainer>
-                <div style={{ width: '100%' }}>
-                    <div className="task-sub-heading">
-                        <h3>Profile</h3>
-                    </div>
-                    <div className="profile-container">
-                        {profileData ? (
-                            <div>
-                                <div className="profile-img-container">
-                                    <img className="profile-img" src={profileData?.owner?.avatar} alt="" width="600" height="400" />
-                                </div>
-                                <hr />
-                                <h2>{profileData?.owner?.name}</h2>
-                                <p>{profileData?.bio}</p>
-                                <p>{profileData?.age}</p>
-                                <p>{profileData?.links}</p>
-                                <a href="/dashboard">Back to Dashboard</a>
-                            </div>
-                        ) : (
-                            <div>
-                                {!showFormBtn ? <button onClick={revealForm}>Create Profile</button> : (
-                                    <p>Hello World!</p>
-                                )}
-                            </div>
-                        )}
-                    </div>
+                <div className="profile-header">
+                    <h2>Profile</h2>
+                    <span className="breadcrumb">
+                        <b><a href="/dashboard">Dashboard</a> / <a>Profile</a></b>
+                    </span>
                 </div>
+                <UserInfoContainer>
+                    <div className="user-info-header">
+                        <div className="profile-img-container">
+                            <img src={profileData?.owner?.avatar} className="profile-img" alt="" width="600" height="400" />
+                        </div>
+                        <span className="headline-container">
+                            <h2>{profileData?.owner?.name}</h2>
+                            <span>{profileData?.occupation}</span>
+                        </span>
+                    </div>
+                    <div className="personal-info-container">
+                        <h4 className="personal-info-title">Your Personal infomation</h4>
+                        <span>
+                            <label htmlFor="">Full Name</label>:{' '}
+                            {profileData?.owner?.name}
+                        </span>
+                        <br />
+                        <span>
+                            <label htmlFor="">Age</label>:{' '}
+                            {profileData?.age}
+                        </span>
+                        <br />
+                        <span>
+                            <label htmlFor="">Biography</label>:{' '}
+                            {profileData?.bio}
+                        </span>
+                    </div>
+                </UserInfoContainer>
             </MainContainer>
         </ProfileContainer>
     );

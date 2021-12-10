@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-export const Panel = styled.a`
-  width: 98.3%;
-  height: 100%;
+export const Panel = styled.div`
+  width: 35%;
+  height: 100px;
   border: 1px solid ${props => props.theme.main};
   border-radius: 5px;
   margin: 10px;

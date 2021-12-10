@@ -14,19 +14,17 @@ const Nav = () => {
     }
     return (
         <NavbarWrapper>
-            <div className="nav-align">
-                <h2 onClick={() => navigate('/')}>Task Manager</h2>
-                <UnorderedList>
-                    {!currentUser ? (
-                        <li><a href="/register">Register</a></li> &&
-                        <li><a href="/login">Login</a></li>
-                    ) : (
-                        <span className="img-button">
-                        <img src={currentUser?.avatar} className="profile-img" alt="" width="600" height="400" onClick={handleLogout} />
-                    </span>
-                    )}
-                </UnorderedList>
-            </div>
+            <h2 onClick={() => navigate('/')}>Task Manager</h2>
+            <UnorderedList>
+                {!currentUser ? (
+                    <li><a href="/register">Register</a></li> &&
+                    <li><a href="/login">Login</a></li>
+                ) : (
+                    <span className="img-button">
+                    <img src={currentUser?.avatar} className="profile-img" alt="" width="600" height="400" onClick={handleLogout} />
+                </span>
+                )}
+            </UnorderedList>
         </NavbarWrapper>
     );
 }

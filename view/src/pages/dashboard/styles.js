@@ -1,20 +1,18 @@
 import styled from 'styled-components';
 
 export const DashboardContainer = styled.main`
-  height: 100vh;
+  //height: 100vh;
+  .dashboard-header {
+    margin: 0 200px;
+  }
 `;
 export const TaskContainer = styled.main`
-  max-width: 1200px;
-  margin: 40px auto;
+  width: 88%;
+  margin: 40px 200px;
   border: 1px solid #ddd;
-  height: 70vh;
+  height: 100%;
   display: flex;
-  h3 {
-    margin: 10px;
-  }
-  hr {
-    color: #DDDDDD;
-  }
+  flex-wrap: wrap;
   .task-sub-heading {
     display: flex;
     align-items: center;

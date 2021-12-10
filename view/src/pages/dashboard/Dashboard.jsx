@@ -4,12 +4,12 @@ import Nav from '../../components/nav/Nav';
 import { DashboardContainer, TaskContainer } from './styles';
 import tasks from '../../API/tasks';
 import moment from 'moment';
-import TaskPanel from "../../components/panel/TaskPanel";
-import Sidebar from "../../components/sidebar/sidebar";
+import TaskPanel from '../../components/panel/TaskPanel';
 import { useNavigate } from 'react-router-dom';
+import SideMenu from '../../components/sideMenu/SideMenu';
+import Card from '../../components/card/Card';
 
 function Dashboard() {
-    const navigate = useNavigate();
     const { currentUser } = useCurrentUser();
     const [taskData, setTaskData] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -28,26 +28,23 @@ function Dashboard() {
         })
     }
     const displayTasks = taskData?.length > 0 ? taskData?.map(task => (
-        <TaskPanel task={task} />
+        <Card task={task} />
     )): <p className="tasks-not-found">No tasks found in Database!</p>
     return (
         <DashboardContainer>
             <Nav />
-            <TaskContainer>
-                <Sidebar />
-                <div style={{ width: '100%' }}>
-                    <div className="task-sub-heading">
-                        <h3>{currentUser?.username}'s Tasks</h3>
-                        <button className="btn-add" onClick={() => navigate('/create-task')}><i className="fas fa-plus" /></button>
-                    </div>
-                    <hr />
-                    {!loading ?
-                        <div>
-                            {displayTasks}
-                        </div> : <p>Tasks are Loading...</p>
-                    }
+            <SideMenu />
+            <header className="dashboard-header">
+                <div style={{ margin: '20px 0' }}>
+                    <h2>Dashboard</h2>
+                    <h4>Welcome Back, {currentUser?.username}</h4>
                 </div>
-            </TaskContainer>
+            </header>
+            {!loading ?
+                <TaskContainer>
+                    {displayTasks}
+                </TaskContainer> : <p style={{ margin: '0 200px' }}>Tasks are loading...</p>
+            }
         </DashboardContainer>
     );
 }
