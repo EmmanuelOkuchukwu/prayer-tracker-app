@@ -14,4 +14,7 @@ export const MenuContainer = styled.aside`
   -moz-box-shadow: 4px 3px 5px 0 rgba(88, 48, 136, 1);
   box-shadow: 4px 3px 5px 0 rgba(88, 48, 136, 1);
   line-height: 1.8;
+  @media screen and (max-width: ${props => props.theme.mobile}) {
+    display: none;
+  }
 `;

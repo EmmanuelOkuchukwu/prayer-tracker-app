@@ -14,7 +14,9 @@ const Nav = () => {
     }
     return (
         <NavbarWrapper>
-            <h2 onClick={() => navigate('/')}>Task Manager</h2>
+            <span style={{ display: 'flex', alignItems: 'center' }}>
+                <i className="fas fa-bars" /><h2 onClick={() => navigate('/')}>Task Manager</h2>
+            </span>
             <UnorderedList>
                 {!currentUser ? (
                     <li><a href="/register">Register</a></li> &&

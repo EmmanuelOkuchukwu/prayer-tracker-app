@@ -3,15 +3,8 @@ import { SidebarContainer, LinkBtn } from './styles';
 
 const Sidebar = () => {
     return (
-        <SidebarContainer>
-            <ul>
-                <h3>Menu</h3><br/>
-                <li><LinkBtn href="/dashboard">Home</LinkBtn></li><br/>
-                <li><LinkBtn href="/create-task">Add Task</LinkBtn></li>
-                <br/>
-                <li><LinkBtn href="/profile">Profile</LinkBtn></li>
-            </ul>
-        </SidebarContainer>
+        <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial' }}>
+        </div>
     );
 }
 
