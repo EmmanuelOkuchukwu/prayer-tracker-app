@@ -12,7 +12,7 @@ function Home() {
                     <img src={TaskIcon} alt="img" className="task-icon" width="600" height="400" />
                 </div>
                 <div className="title-container">
-                    <h1>Task Manager</h1>
+                    <h1>Prayer Manager</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dignissimos et facilis hic optio similique?</p>
                 </div>
             </div>

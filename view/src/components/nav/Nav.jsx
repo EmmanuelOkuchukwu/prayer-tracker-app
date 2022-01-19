@@ -15,7 +15,7 @@ const Nav = () => {
     return (
         <NavbarWrapper>
             <span style={{ display: 'flex', alignItems: 'center' }}>
-                <i className="fas fa-bars" /><h2 onClick={() => navigate('/')}>Task Manager</h2>
+                <i className="fas fa-bars" /><h2 onClick={() => navigate('/')}>Prayer Tracker</h2>
             </span>
             <UnorderedList>
                 {!currentUser ? (

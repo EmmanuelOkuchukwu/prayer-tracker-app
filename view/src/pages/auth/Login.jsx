@@ -48,7 +48,7 @@ function Login() {
     return (
         <LoginContainer>
             <h2>
-                <i className="fas fa-tasks" /> Task Manager
+                <i className="fas fa-tasks" /> Prayer Manager
             </h2>
             <LoginBackground>
                 <Form onSubmit={handleLogin}>

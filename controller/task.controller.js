@@ -1,29 +1,17 @@
 const mongoose = require('mongoose');
 const Task = mongoose.model('task');
+const expressAsyncHandler = require('express-async-handler');
 
-const create = (req, res) => {
-    const { title, description, completed, dueDate } = req.body;
-
-    if(!title || !description || !dueDate) {
-        res.status(422).json({ error: 'Field is empty!' });
+const create = expressAsyncHandler(async (req, res) => {
+    const { title, description, completed, dueDate } = req?.body;
+    try {
+        const task = await Task.create({ title, description, completed, dueDate, createdBy: req?.user?._id })
+        res?.status(201).json(task);
+    } catch(error) {
+        console.log(error);
+        res?.status(401).json({ error: error });
     }
-    req.user.password = undefined;
-    const task = new Task({
-        title,
-        description,
-        completed,
-        dueDate,
-        createdBy: req.user
-    })
-    task.save()
-        .then((results) => {
-            res.status(201).json(results);
-        })
-        .catch((error) => {
-            console.log(error);
-            res.status(401).json({ error: error });
-        })
-}
+})
 
 const readAll = (req, res) => {
     Task.find()
@@ -36,7 +24,8 @@ const readAll = (req, res) => {
         })
 }
 const readOne = (req, res) => {
-    Task.findOne({ _id: req.params.id })
+    const id = req.params.id
+    Task.findById(id)
         .then((result) => {
             res.status(200).json(result)
         }, error => {

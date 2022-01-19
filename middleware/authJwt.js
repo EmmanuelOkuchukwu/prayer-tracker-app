@@ -2,25 +2,25 @@ const mongoose = require('mongoose');
 const User = mongoose.model('user');
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = require('../keys');
+const expressAsyncHandler = require('express-async-handler');
 
-module.exports = (req, res, next) => {
-    const { authorization } = req.headers;
-    if(!authorization) {
-        return res.status(401).send({ error: 'You need to be logged in to have access!' });
-    }
-    const token = authorization.replace("Bearer ","");
-    try {
-        jwt.verify(token, SECRET_KEY, (error, payload) => {
-            if(error) {
-                return res.status(401).send({ error: 'You need to be logged in to have access!' })
+const requireJwt = expressAsyncHandler( async (req, res, next) => {
+    let token;
+    if(req?.headers?.authorization?.startsWith('Bearer')) {
+        token = req?.headers?.authorization?.split(" ")[1];
+        try {
+            if(token) {
+                const decodedUser = jwt.verify(token, SECRET_KEY);
+                // find the logged in user
+                req.user = await User.findById(decodedUser?.id).select("-password");
+                next()
             }
-            const { _id } = payload;
-            User.findById(_id).then(userInfo => {
-                req.user = userInfo;
-                next();
-            })
-        })
-    } catch(e) {
-        res.status(401).json({ msg: e });
+        } catch(error) {
+            throw new Error("Not Authorized!");
+        }
+    } else {
+        throw new Error('No token found for the header!');
     }
-}
+})
+
+module.exports = requireJwt;

@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const { DbConnection } = require('./dbConn');
+const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 
 const PORT = process.env.PORT || 8081;
 
@@ -28,6 +29,9 @@ app.use(require('./routes/user.routes'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(notFound);
+app.use(errorHandler);
 
 DbConnection()
 .then(() => {
