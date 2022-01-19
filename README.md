@@ -1,21 +1,21 @@
-# Task Tracker App
+# Prayer Tracker App
 
-The Task Tracker Web Application is a productivity web app that is in the process of being developed. The web app allows the users to register for an account, login, create, read, update and delete tasks that the users set for themselves. This initial purpose of this web application was just a fun side project for me to learn and develop my skills in both frontend and backend but I've been inspired to push for more features to be implemented, and I will eventually deploy this project to heroku in the near future. I am building this project to be for anyone to use, so you can use this app for homework assignments, chores or a big project that you are a part of.
+The Prayer Tracker Web Application is a productivity web app that is in the process of being developed. The web app allows the users to register for an account, login, create, read, update and delete tasks that the users set for themselves. This initial purpose of this web application was just a fun side project for me to learn and develop my skills in both frontend and backend but I've been inspired to push for more features to be implemented, and I will eventually deploy this project to heroku in the near future. I am building this project to be for anyone to use, so you can use this app for homework assignments, chores or a big project that you are a part of.
 
 #### Features/requirements:
 User must register for an account in order gain access to the application.
 
-User must login to use create and view their tasks.
+User must login to use create and view their prayers.
 
 User can create their profile after logging in for the first time.
 
-User can create a new task, and view their tasks 
+User can create a new task, and view their prayers 
     
-    User can update their tasks.
+    User can update their prayers.
     
-    User can mark their tasks as completed or not.
+    User can mark their prayers as answered or not.
     
-    User can delete their tasks once they have finished.
+    User can delete their prayers once they have finished.
     
     
 ### Future features:    
